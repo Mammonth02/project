@@ -1,0 +1,484 @@
+{%extends 'home/body.html'%}
+{%block main%}
+
+  
+    <div class="header_top home3_style dn-992">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-xl-7">
+            <div class="header_top_contact_opening_widget text-center text-md-start">
+              <ul class="mb0">
+                <li class="list-inline-item"><a href="#"><span class="flaticon-phone-call"></span>1-800-458-56987</a></li>
+                <li class="list-inline-item"><a href="#"><span class="flaticon-map"></span>47 Bakery Street, London, UK</a></li>
+                <li class="list-inline-item"><a href="#"><span class="flaticon-clock"></span>Mon - Fri 8:00 - 18:00</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-xl-5">
+            <div class="header_top_social_widgets text-center text-md-end">
+              <ul class="m0">
+                <li class="list-inline-item"><a href="#"><span class="fab fa-facebook-f"></span></a></li>
+                <li class="list-inline-item"><a href="#"><span class="fab fa-twitter"></span></a></li>
+                <li class="list-inline-item"><a href="#"><span class="fab fa-instagram"></span></a></li>
+                <li class="list-inline-item"><a href="#"><span class="fab fa-linkedin"></span></a></li>
+                {%if request.user.is_authenticated%}
+                  <li class="list-inline-item"><a href="">{{user.username}}      </a><a href="{%url 'logout'%}" data-bs-target="#logInModal">Выйти</a></li>
+                {%else%}
+                  <li class="list-inline-item"><a href="{%url 'login'%}">Войти</a></li>
+                  <li class="list-inline-item"><a href="{%url 'register'%}">Регистрация</a></li>
+                {%endif%}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+    <header class="header-nav menu_style_home_one home3_style main-menu">
+      <!-- Ace Responsive Menu -->
+      <nav> 
+        <div class="container posr"> 
+          <!-- Menu Toggle btn-->
+          <div class="menu-toggle">
+            <button type="button" id="menu-btn">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <a href="index.html" class="navbar_brand float-start dn-md">
+            <img class="logo1 img-fluid" src="images/header-logo2.svg" alt="header-logo2.png">
+            <img class="logo2 img-fluid" src="images/header-logo2.svg" alt="header-logo2.svg">
+          </a>
+          <!-- Responsive Menu Structure-->
+          <ul id="respMenu" class="ace-responsive-menu menu_list_custom_code wa text-end" data-menu-style="horizontal">
+          <a href="{% url 'home'%}"><span class="title">Home</span><span class="arrow "></span></a>
+  
+            <li> <a href="#"><span class="title">Explore</span><span class="arrow "></span></a>
+              <!-- Level Two-->
+              <ul class="sub-menu">
+                <li> <a href="#">User Info<span class="arrow "></span></a> 
+                  <ul class="sub-menu">
+                    <li><a href="page-dashboard.html">Dashboard</a></li>
+                    <li><a href="page-dashboard-profile.html">Profile</a></li>
+                    <li><a href="page-dashboard-listing.html">My Listing</a></li>
+                    <li><a href="page-dashboard-favorites.html">Favorites</a></li>
+                    <li><a href="page-dashboard-add-listings.html">Add Listing</a></li>
+                    <li><a href="page-dashboard-messages.html">Messages</a></li>
+                    <li><a href="page-login.html">Logout</a></li>
+                  </ul>
+                </li>
+                <li><a href="page-user-profile.html">User Profile</a></li>
+              </ul>
+            </li>
+            <li> <a href="#"><span class="title">Listing</span><span class="arrow "></span></a>
+              <ul class="sub-menu">
+                <li> <a href="#">Listing Styles<span class="arrow "></span></a> 
+                  <ul class="sub-menu">
+                    <li><a href="page-list-v1.html">Listing v1</a></li>
+                    <li><a href="page-list-v2.html">Listing v2</a></li>
+                    <li><a href="page-list-v3.html">Listing v3</a></li>
+                    <li><a href="page-list-v4.html">Listing v4</a></li>
+                    <li><a href="page-list-v5.html">Listing v5</a></li>
+                    <li><a href="page-list-v6.html">Listing v6</a></li>
+                    <li><a href="page-list-v7.html">Listing v7</a></li>
+                  </ul>
+                </li>
+                <li> <a href="#">Listing Map<span class="arrow "></span></a> 
+                  <ul class="sub-menu">
+                    <li><a href="page-list-v8.html">Map v1</a></li>
+                    <li><a href="page-list-v9.html">Map v2</a></li>
+                    <li><a href="page-list-v10.html">Map v3</a></li>
+                  </ul>
+                </li>
+                <li> <a href="#">Listing Single<span class="arrow "></span></a> 
+                  <ul class="sub-menu">
+                    <li><a href="page-car-single-v1.html">Single V1</a></li>
+                    <li><a href="page-car-single-v2.html">Single V2</a></li>
+                    <li><a href="page-car-single-v3.html">Single V3</a></li>
+                    <li><a href="page-car-single-v4.html">Single V4</a></li>
+                    <li><a href="page-car-single-v5.html">Single V5</a></li>
+                    <li><a href="page-car-single-v6.html">Single V6</a></li>
+                  </ul>
+                </li>
+                <li><a href="page-dashboard-add-listings.html">New Listing</a></li>
+              </ul>
+            </li>
+            <li class=""> <a href="#"><span class="title">Blog</span><span class="arrow "></span></a>
+              <ul class="sub-menu" style="display: none;">
+                <li><a href="page-blog-grid.html">Blog Grid</a></li>
+                <li><a href="page-blog-list.html">Blog List</a></li>
+                <li><a href="page-blog-single.html">Blog Single</a></li>
+              </ul>
+            </li>
+            <li> <a href="#"><span class="title">Shop</span><span class="arrow "></span></a>
+              <ul class="sub-menu">
+                <li><a href="page-shop.html">Shop</a></li>
+                <li><a href="page-shop-cart.html">Cart</a></li>
+                <li><a href="page-shop-checkout.html">Checkout</a></li>
+                <li><a href="page-shop-complete-order.html">Complete Order</a></li>
+                <li><a href="page-shop-single.html">Single</a></li>
+                <li><a href="page-user-profile.html">User Profile</a></li>
+              </ul>
+            </li>
+            <li> <a href="#"><span class="title">Pages</span><span class="arrow "></span></a>
+              <ul class="sub-menu">
+                <li><a href="page-about.html">About Us</a></li>
+                <li><a href="page-calculator.html">Calculator</a></li>
+                <li><a href="page-compare.html">Compare</a></li>
+                <li><a href="page-contact.html">Contact</a></li>
+                <li><a href="page-error.html">404 Page</a></li>
+                <li><a href="page-faq.html">Faq</a></li>
+                <li><a href="page-login.html">Login</a></li>
+                <li><a href="page-pricing.html">Pricing</a></li>
+                <li><a href="page-register.html">Register</a></li>
+                <li><a href="page-service.html">Service</a></li>
+                <li><a href="page-terms.html">Terms and Conditions</a></li>
+                <li><a href="page-ui-element.html">UI Elements</a></li>
+              </ul>
+            </li>
+            <li class="add_listing"><a href="{%url 'listings'%}">+ Добавить</a></li>
+            {%if request.user.is_authenticated%}
+            <li><a class="favorite" href="{%url 'favorites'%}"><span class="body-color flaticon-heart-1 fz18"><sup class="badge">{{like_len}}</sup></span></a></li>
+            <li><a class="notification" href="page-dashboard.html#"><span class="body-color flaticon-bell fz16"></span></a></li>
+            <li class="user_setting">
+              <div class="dropdown">
+                <a class="btn dropdown-toggle" href="page-dashboard.html#" data-bs-toggle="dropdown">
+                  <img class="rounded-circle mr10" src="images/team/e1.png" alt="e1.png"> 
+                  <span class="dn-1366">{{user.username}}<span class="fas fa-angle-down ml5"></span></span>
+                </a>
+                <div class="dropdown-menu">
+                  <div class="user_set_header">
+                    <img class="float-start" src="images/team/e1.png" alt="e1.png">
+                    <p>{{user.first_name}}<br><span class="address">{{user.email}}</span></p>
+                  </div>
+                  <div class="user_setting_content">
+                    <a class="dropdown-item active" href="page-dashboard.html#">My Profile</a>
+                    <a class="dropdown-item" href="page-dashboard.html#">Messages</a>
+                    <a class="dropdown-item" href="page-dashboard.html#">My Listing</a>
+                    <a class="dropdown-item" href="page-dashboard.html#">Help</a>
+                    <a class="dropdown-item" href="page-dashboard.html#">Log out</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          {%endif%}
+          </ul>
+        </div>
+      </nav>
+    </header>
+  
+  
+
+	<div class="preloader"></div>
+  <!-- Inner Page Breadcrumb -->
+  <section class="inner_page_breadcrumb">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="breadcrumb_content">
+            <h2 class="breadcrumb_title">Used Vehicles For Sale</h2>
+            <p class="subtitle">Listings</p>
+            <ol class="breadcrumb fn-767 mt10-sm">
+              <li class="breadcrumb-item"><a href="page-list-v6.html#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page"><a href="page-list-v6.html#">Cars for Sale</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Listing Grid View -->
+  <section class="our-listing bgc-white pb30-991 inner_page_section_spacing">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="listing_sidebar">
+            <div class="sidebar_content_details style3">
+              <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+              <div class="sidebar_listing_list style2 mobile_sytle_sidebar mb0">
+                <div class="siderbar_widget_header">
+                  <h4 class="title mb0">Search Filters<a class="filter_closed_btn float-end" href="page-list-v6.html#"><span class="fas fa-times"></span></a></h4>
+                </div>
+                <div class="sidebar_advanced_search_widget">
+                  <ul class="sasw_list mb0">
+                    <li class="search_area">
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Enter Keyword">
+                      </div>
+                    </li>
+                    <li>
+                      <div class="search_option_two">
+                        <div class="candidate_revew_select">
+                          <div class="dropdown bootstrap-select w100 show-tick">
+                            <select class="selectpicker w100 show-tick" tabindex="-98">
+                              <option>Condition</option>
+                              <option>Most Recent</option>
+                              <option>Recent</option>
+                              <option>Best Selling</option>
+                              <option>Old Review</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="search_option_two">
+                        <div class="candidate_revew_select">
+                          <div class="dropdown bootstrap-select w100 show-tick">
+                            <select class="selectpicker w100 show-tick" tabindex="-98">
+                              <option>Select Makes</option>
+                              <option>Audi</option>
+                              <option>Bentley</option>
+                              <option>BMW</option>
+                              <option>Ford</option>
+                              <option>Honda</option>
+                              <option>Mercedes</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="search_option_two">
+                        <div class="candidate_revew_select">
+                          <div class="dropdown bootstrap-select w100 show-tick">
+                            <select class="selectpicker w100 show-tick" tabindex="-98">
+                              <option>Select Models</option>
+                              <option>A3 Sportback</option>
+                              <option>A4</option>
+                              <option>A6</option>
+                              <option>Q5</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="search_option_two">
+                        <div class="candidate_revew_select">
+                          <div class="dropdown bootstrap-select w100 show-tick">
+                            <select class="selectpicker w100 show-tick" tabindex="-98">
+                              <option>Select Type</option>
+                              <option>Convertible</option>
+                              <option>Coupe</option>
+                              <option>Hatchback</option>
+                              <option>Sedan</option>
+                              <option>SUV</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="search_option_two">
+                        <div class="candidate_revew_select">
+                          <div class="dropdown bootstrap-select w100 show-tick">
+                            <select class="selectpicker w100 show-tick" tabindex="-98">
+                              <option>Year</option>
+                              <option>1967</option>
+                              <option>1990</option>
+                              <option>2000</option>
+                              <option>2002</option>
+                              <option>2005</option>
+                              <option>2010</option>
+                              <option>2015</option>
+                              <option>2020</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="sidebar_priceing_slider_mobile">
+                        <div class="wrapper">
+                          <h5 class="subtitle">Filter by price</h5>
+                          <div class="mt20 ml10" id="slider"></div>
+                          <span id="slider-range-value1"></span>
+                          <span id="slider-range-value2"></span>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <h5 class="subtitle">Fuel Type</h5>
+                      <div class="ui_kit_checkbox">
+                        <div class="form-check mb20">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckPetrolSbp">
+                          <label class="form-check-label" for="flexCheckPetrolSbp">Petrol (676)</label>
+                        </div>
+                        <div class="form-check mb20">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDieselSbp">
+                          <label class="form-check-label" for="flexCheckDieselSbp">Diesel (9,784)</label>
+                        </div>
+                        <div class="form-check mb20">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckElectricSbp">
+                          <label class="form-check-label" for="flexCheckElectricSbp">Electric (6.584)</label>
+                        </div>
+                        <div class="form-check mb30">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckHybridSbp">
+                          <label class="form-check-label" for="flexCheckHybridSbp">Hyrbid (97)</label>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <h5 class="subtitle">Transmission</h5>
+                      <div class="ui_kit_checkbox">
+                        <div class="form-check mb20">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckAutometicSbp">
+                          <label class="form-check-label" for="flexCheckAutometicSbp">Automatic (6,676)</label>
+                        </div>
+                        <div class="form-check mb30">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckManualSbp">
+                          <label class="form-check-label" for="flexCheckManualSbp">Manual (9,784)</label>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <h5 class="subtitle">Features</h5>
+                      <div class="sidebar_feature_checkbox">
+                        <div class="wrapper">
+                          <div class="form-check mb15">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultSbp">
+                            <label class="form-check-label" for="flexCheckDefaultSbp">Adaptive Cruise Control (6,676)</label>
+                          </div>
+                          <div class="form-check mb15">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1Sbp">
+                            <label class="form-check-label" for="flexCheckDefault1Sbp">Cooled Seats (9,784)</label>
+                          </div>
+                          <div class="form-check mb15">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2Sbp">
+                            <label class="form-check-label" for="flexCheckDefault2Sbp">Keyless Start (9,784)</label>
+                          </div>
+                          <div class="form-check mb15">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3Sbp">
+                            <label class="form-check-label" for="flexCheckDefault3Sbp">Navigation System (9,784)</label>
+                          </div>
+                          <div class="form-check mb15">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4Sbp">
+                            <label class="form-check-label" for="flexCheckDefault4Sbp">Remote Start (9,784)</label>
+                          </div>
+                          <div class="form-check mb15">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault5Sbp">
+                            <label class="form-check-label" for="flexCheckDefault5Sbp">Cooled Seats (9,784)</label>
+                          </div>
+                          <div class="form-check mb15">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault6Sbp">
+                            <label class="form-check-label" for="flexCheckDefault6Sbp">Keyless Start (9,784)</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault7Sbp">
+                            <label class="form-check-label" for="flexCheckDefault7Sbp">Navigation System (9,784)</label>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="search_option_button">
+                        <button type="submit" class="btn btn-block btn-thm"><span class="flaticon-magnifiying-glass mr10"></span> Search</button>
+                      </div>
+                    </li>
+                    <li class="text-center"><a class="reset-filter" href="page-list-v6.html#">Reset Filter</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        {%include 'filter/site_bar.html'%}
+        <div class="col-lg-8 col-xl-9">
+          <div class="row">
+            <div class="listing_filter_row db-lg">
+              <div class="col-xl-5">
+                <div class="page_control_shorting left_area tac-lg mb30-767 mt15">
+                  <p>Мы нашли <span class="heading-color fw600">{{len_a}} </span>   Автомобилей</p>
+                </div>
+              </div>
+              <div class="col-xl-7">
+                <div class="page_control_shorting right_area text-end tac-lg">
+                  <ul>
+                    <li class="list-inline-item mb10-400"> <a id="open2" class="filter_open_btn style2 dn db-md" href="page-list-v6.html#"><img class="mr10" src="images/icon/filter-icon.svg" alt="filter-icon.svg"> Filters</a> </li>
+                    <li class="list-inline-item short_by_text listone">Sort by:</li>
+                    <li class="list-inline-item listwo">
+                      <select class="selectpicker show-tick">
+                        <option>Date: newest First</option>
+                        <option>Most Recent</option>
+                        <option>Recent</option>
+                        <option>Best Selling</option>
+                        <option>Old Review</option>
+                      </select>
+                    </li>
+                    <li class="list-inline-item list-gird"><a href="page-list-v6.html#"><img src="images/icon/list-grid.svg" alt="list-grid.svg"></a></li>
+                    <li class="list-inline-item list-list"><a href="page-list-v6.html#"><img src="images/icon/list-list.svg" alt="list-list.svg"></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            {% for c in auto_all%}
+            <div class="col-sm-6 col-xl-3">
+                <div class="car-listing">
+                <div class="thumb">
+                    <div class="tag">FEATURED</div>
+                    <img src="{{ c.image.url }}" alt="1.jpg">
+                    <div class="thmb_cntnt2">
+                    <ul class="mb0">
+                        <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-photo-camera mr3"></span> 22</a></li>
+                        <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-play-button mr3"></span> 3</a></li>
+                    </ul>
+                    </div>
+                    <div class="thmb_cntnt3">
+                    <ul class="mb0">
+                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-shuffle-arrows"></span></a></li>
+                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-heart"></span></a></li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="details">
+                    <div class="wrapper">
+                    <h5 class="price">{{c.prise}}$</h5>
+                    <h6 class="title"><a href="{% url 'single_page' c.pk%}">{{c.make}} {{c.model}}</a></h6>
+                    <div class="listign_review">
+                      <ul class="mb0">
+                        {%for r, v in star_r.items%}
+                          {%if r == c.id%}
+                            {%for i in rrr%}
+                              {%if v >= i%}
+                                <li class="list-inline-item"><a href="page-car-single-v1.html#"><i class="fa fa-star"></i></a></li>
+                              {%endif%}
+                            {%endfor%}
+                            <li class="list-inline-item"><a href="page-dashboard-favorites.html#">{{v}}</a></li>
+                          {%endif%}
+                        {%endfor%}
+                        {%for r, v in len_r.items%}
+                          {%if r == c.id%}
+                            <li class="list-inline-item">({{v}} отзывов)</li>
+                          {%endif%}
+                        {%endfor%}
+                      </ul>
+                    </div>
+                    </div>
+                    <div class="listing_footer">
+                    <ul class="mb0">
+                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-road-perspective me-2"></span>{{c.mileage}}</a></li>
+                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gas-station me-2"></span>{{c.fuel_type}}</a></li>
+                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gear me-2"></span>{{c.transmission }}</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+            {%endfor%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Footer -->
+<a class="scrollToHome" href="page-list-v6.html#"><i class="fas fa-arrow-up"></i></a>
+{%endblock main%}

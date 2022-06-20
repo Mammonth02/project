@@ -1,0 +1,79 @@
+<div class="col-lg-4 col-xl-3 dn-md">
+    <div class="sidebar_widgets">
+      <div class="sidebar_widgets_wrapper">
+        <div class="sidebar_advanced_search_widget">
+          <h4 class="title">Search Filters</h4>
+          <ul class="sasw_list mb0"> 
+
+          <form action="{%url 'filter_auto'%}" method="get">
+            <li><h5 class="subtitle">Price</h5></li>
+            <li>
+              <div class="slider-range"></div>
+              <input type="text" class="amount" placeholder="$5,000"> 
+              <input type="text" class="amount2" placeholder="$15,000">
+            </li>
+
+            {%for k, i in view.get_cat.items%}
+            <li>
+              <div class="dropdown">
+                <button class="btn btn-block dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="  height: 49px;">
+                  <h5 class="subtitle" style="margin: 0px;">{{k}}</h5>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  {%for m in i%}
+                  <div class="ui_kit_checkbox" style="margin-left: 10px;">
+                    <div class="form-check mb20">
+                      <input class="form-check-input" type="checkbox" value="{{m.pk}}" checked id="flexCheckPetrol" name="{{k}}">
+                      <label class="form-check-label">{{m.title}}</label>
+                    </div>
+                  </div>
+                  {%endfor%}
+                </ul>
+              </div>
+          </li>
+            {%endfor%}
+
+            {%for k, v in view.get_drp.items%}
+              <li>
+                  <div class="dropdown">
+                    <button class="btn btn-block dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="  height: 49px;">
+                      <h5 class="subtitle" style="margin: 0px;">{{k}}</h5>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      {%for m in v%}
+                        <div class="ui_kit_checkbox" style="margin-left: 10px;">
+                          <div class="form-check mb20">
+                            <input class="form-check-input" type="checkbox" value="{{m}}" checked id="flexCheckPetrol" name="{{k}}">
+                            <label class="form-check-label">{{m}}</label>
+                          </div>
+                        </div>
+                      {%endfor%}
+                    </ul>
+                  </div>
+              </li>
+            {%endfor%}
+            <div>
+              <li><h5 class="subtitle">Цена</h5></li>
+              <li class="min_area list-inline-item">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Минимум" name="min_prise" value="" >
+                </div>
+              </li>
+              <li class="max_area list-inline-item">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Максимум" name="max_prise">
+                </div>
+              </li>
+            </div>
+              <li>
+                <div class="search_option_button">
+                  <button type="submit" class="btn btn-block btn-thm"><span class="flaticon-magnifiying-glass mr10"></span> Search</button>
+                </div>
+              </li>
+            </form>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  

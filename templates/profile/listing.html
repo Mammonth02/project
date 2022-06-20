@@ -1,0 +1,279 @@
+{%extends 'profile/body/body.html'%}
+{%block main%}
+<div class="wrapper">
+	<div class="preloader"></div>
+  
+	<!-- Our Dashbord -->
+	<section class="our-dashbord dashbord bgc-f9">
+		<div class="container-fluid">
+			<div class="row">
+        <div class="col-xxl-10 offset-xxl-2 dashboard_grid_space">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="extra-dashboard-menu dn-lg">
+                {%include 'profile/body/site_bar.html'%}
+              </div>
+            </div>
+          </div>
+					<div class="row">
+						<div class="col-xl-8">
+              <div class="col-lg-12 mb50">
+                <div class="breadcrumb_content">
+                  <h2 class="breadcrumb_title">Mои Авто</h2>
+                </div>
+              </div>
+						</div>
+					</div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="dashboard_favorites_contents dashboard_my_lising_tabs p10-520">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <!-- Nav tabs -->
+                    <div class="nav nav-tabs justify-content-start" role="tablist">
+                      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Все авто</button>
+                      <button class="nav-link" id="nav-shopping-tab" data-bs-toggle="tab" data-bs-target="#nav-shopping" role="tab" aria-controls="nav-shopping" aria-selected="false">Новые</button>
+                      <button class="nav-link" id="nav-hotels-tab" data-bs-toggle="tab" data-bs-target="#nav-hotels" role="tab" aria-controls="nav-hotels" aria-selected="false">Использованые</button>
+                    </div>
+                  </div>
+                  <!-- Tab panes -->
+                  <div class="col-lg-12 mt50">
+                    <div class="tab-content row" id="nav-tabContent">
+                      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="col-lg-12">
+                          <div class="table-responsive my_lisging_table">
+                            <table class="table">
+                              <thead class="table-light">
+                                <tr class="thead_row">
+                                  <th class="thead_title pl20" scope="col">Модель</th>
+                                  <th class="thead_title" scope="col">Maрка</th>
+                                  <th class="thead_title" scope="col">Год</th>
+                                  <th class="thead_title" scope="col">Каробка передач</th>
+                                  <th class="thead_title" scope="col">Топливо</th>
+                                  <th class="thead_title" scope="col">Прочие</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {%for car in cars%}
+                                <tr>
+                                  <th class="align-middle pl20" scope="row">
+                                    <div class="car-listing bdr_none d-flex mb0">
+                                      <div class="thumb w150">
+                                        <img class="img-fluid" src="{{car.image.url}}" alt="1.jpg">
+                                      </div>
+                                      <div class="details ms-1">
+                                        <h6 class="title"><a href="page-car-single-v1.html">{{car.make}} {{car.model}} - {{car.year}}</a></h6>
+                                        <h5 class="price">{{car.prise}}$</h5>
+                                      </div>
+                                    </div>
+                                  </th>
+                                  <td class="align-middle">{{car.make}}</td>
+                                  <td class="align-middle">{{car.year}}</td>
+                                  <td class="align-middle">{{car.transmission}}</td>
+                                  <td class="align-middle">{{car.fuel_type}}</td>
+                                  <td class="editing_list align-middle">
+                                    <ul>
+                                      <li class="list-inline-item mb-1">
+                                        <a href="{%url 'single_page' car.pk%}" data-bs-toggle="tooltip" data-bs-placement="top" title="Подробнее"><span class="flaticon-view"></span></a>
+                                      </li>
+                                      <li class="list-inline-item mb-1">
+                                        <a href="{%url 'Ubd_post' car.pk%}" data-bs-toggle="tooltip" data-bs-placement="top" title="Изменить"><span class="flaticon-pen"></span></a>
+                                      </li>
+                                      <li class="list-inline-item mb-1">
+                                        <a href="{%url 'delete' car.pk%}" data-bs-toggle="tooltip" data-bs-placement="top" title="Удалить"><span class="flaticon-trash"></span></a>
+                                      </li>
+                                    </ul>
+                                  </td>
+                                </tr>
+                                {%endfor%}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="mbp_pagination mt10">
+                            <ul class="page_navigation">
+                              <li class="page-item">
+                                <a class="page-link" href="" tabindex="-1" aria-disabled="true"> <span class="fa fa-arrow-left"></span></a>
+                              </li>
+                                {%for p in cars.paginator.page_range%}
+                                {%if cars.number == p%}
+                                  <li class="page-item active" aria-current="page">
+                                    <a class="page-link" href="?page={{p}}">{{p}}<span class="sr-only"></span></a>
+                                  </li>
+                                {%else%}
+                                  <li class="page-item">
+                                    <a class="page-link" href="?page={{p}}">{{p}}<span class="sr-only"></span></a>
+                                  </li>
+                                {%endif%}
+                                {%endfor%}
+                                <li class="page-item">
+                                  <a class="page-link" href=""><span class="fa fa-arrow-right"></span></a>
+                                </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="nav-shopping" role="tabpanel" aria-labelledby="nav-shopping-tab">
+                        <div class="col-lg-12">
+                          <div class="table-responsive my_lisging_table">
+                            <table class="table">
+                              <thead class="table-light">
+                                <tr class="thead_row">
+                                  <th class="thead_title pl20" scope="col">Модель</th>
+                                  <th class="thead_title" scope="col">Maрка</th>
+                                  <th class="thead_title" scope="col">Год</th>
+                                  <th class="thead_title" scope="col">Каробка передач</th>
+                                  <th class="thead_title" scope="col">Топливо</th>
+                                  <th class="thead_title" scope="col">Прочие</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {%for car in cars_new%}
+                                <tr>
+                                  <th class="align-middle pl20" scope="row">
+                                    <div class="car-listing bdr_none d-flex mb0">
+                                      <div class="thumb w150">
+                                        <img class="img-fluid" src="{{car.image.url}}" alt="1.jpg">
+                                      </div>
+                                      <div class="details ms-1">
+                                        <h6 class="title"><a href="page-car-single-v1.html">{{car.make}} {{car.model}} - {{car.year}}</a></h6>
+                                        <h5 class="price">{{car.prise}}$</h5>
+                                      </div>
+                                    </div>
+                                  </th>
+                                  <td class="align-middle">{{car.make}}</td>
+                                  <td class="align-middle">{{car.year}}</td>
+                                  <td class="align-middle">{{car.transmission}}</td>
+                                  <td class="align-middle">{{car.fuel_type}}</td>
+                                  <td class="editing_list align-middle">
+                                    <ul>
+                                      <li class="list-inline-item mb-1">
+                                        <a href="{%url 'single_page' car.pk%}" data-bs-toggle="tooltip" data-bs-placement="top" title="Подробнее"><span class="flaticon-view"></span></a>
+                                      </li>
+                                      <li class="list-inline-item mb-1">
+                                        <a href="{%url 'Ubd_post' car.pk%}" data-bs-toggle="tooltip" data-bs-placement="top" title="Изменить"><span class="flaticon-pen"></span></a>
+                                      </li>
+                                      <li class="list-inline-item mb-1">
+                                        <a href="{%url 'delete' car.pk%}" data-bs-toggle="tooltip" data-bs-placement="top" title="Удалить"><span class="flaticon-trash"></span></a>
+                                      </li>
+                                    </ul>
+                                  </td>
+                                </tr>
+                                {%endfor%}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="mbp_pagination mt10">
+                            <ul class="page_navigation">
+                              <li class="page-item">
+                                <a class="page-link" href="" tabindex="-1" aria-disabled="true"> <span class="fa fa-arrow-left"></span></a>
+                              </li>
+                                {%for p in cars_new.paginator.page_range%}
+                                {%if cars_new.number == p%}
+                                  <li class="page-item active" aria-current="page">
+                                    <a class="page-link" href="?page={{p}}">{{p}}<span class="sr-only"></span></a>
+                                  </li>
+                                {%else%}
+                                  <li class="page-item">
+                                    <a class="page-link" href="?page={{p}}">{{p}}<span class="sr-only"></span></a>
+                                  </li>
+                                {%endif%}
+                                {%endfor%}
+                                <li class="page-item">
+                                  <a class="page-link" href=""><span class="fa fa-arrow-right"></span></a>
+                                </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="nav-hotels" role="tabpanel" aria-labelledby="nav-hotels-tab">
+                        <div class="col-lg-12">
+                          <div class="table-responsive my_lisging_table">
+                            <table class="table">
+                              <thead class="table-light">
+                                <tr class="thead_row">
+                                  <th class="thead_title pl20" scope="col">Модель</th>
+                                  <th class="thead_title" scope="col">Maрка</th>
+                                  <th class="thead_title" scope="col">Год</th>
+                                  <th class="thead_title" scope="col">Каробка передач</th>
+                                  <th class="thead_title" scope="col">Топливо</th>
+                                  <th class="thead_title" scope="col">Прочие</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {%for car in cars_used%}
+                                <tr>
+                                  <th class="align-middle pl20" scope="row">
+                                    <div class="car-listing bdr_none d-flex mb0">
+                                      <div class="thumb w150">
+                                        <img class="img-fluid" src="{{car.image.url}}" alt="1.jpg">
+                                      </div>
+                                      <div class="details ms-1">
+                                        <h6 class="title"><a href="page-car-single-v1.html">{{car.make}} {{car.model}} - {{car.year}}</a></h6>
+                                        <h5 class="price">{{car.prise}}$</h5>
+                                      </div>
+                                    </div>
+                                  </th>
+                                  <td class="align-middle">{{car.make}}</td>
+                                  <td class="align-middle">{{car.year}}</td>
+                                  <td class="align-middle">{{car.transmission}}</td>
+                                  <td class="align-middle">{{car.fuel_type}}</td>
+                                  <td class="editing_list align-middle">
+                                    <ul>
+                                      <li class="list-inline-item mb-1">
+                                        <a href="{%url 'single_page' car.pk%}" data-bs-toggle="tooltip" data-bs-placement="top" title="Подробнее"><span class="flaticon-view"></span></a>
+                                      </li>
+                                      <li class="list-inline-item mb-1">
+                                        <a href="{%url 'Ubd_post' car.pk%}" data-bs-toggle="tooltip" data-bs-placement="top" title="Изменить"><span class="flaticon-pen"></span></a>
+                                      </li>
+                                      <li class="list-inline-item mb-1">
+                                        <a href="{%url 'delete' car.pk%}" data-bs-toggle="tooltip" data-bs-placement="top" title="Удалить"><span class="flaticon-trash"></span></a>
+                                      </li>
+                                    </ul>
+                                  </td>
+                                </tr>
+                                {%endfor%}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="mbp_pagination mt10">
+                            <ul class="page_navigation">
+                              <li class="page-item">
+                                <a class="page-link" href="" tabindex="-1" aria-disabled="true"> <span class="fa fa-arrow-left"></span></a>
+                              </li>
+                                {%for p in cars_used.paginator.page_range%}
+                                {%if cars_used.number == p%}
+                                  <li class="page-item active" aria-current="page">
+                                    <a class="page-link" href="?page={{p}}">{{p}}<span class="sr-only"></span></a>
+                                  </li>
+                                {%else%}
+                                  <li class="page-item">
+                                    <a class="page-link" href="?page={{p}}">{{p}}<span class="sr-only"></span></a>
+                                  </li>
+                                {%endif%}
+                                {%endfor%}
+                                <li class="page-item">
+                                  <a class="page-link" href=""><span class="fa fa-arrow-right"></span></a>
+                                </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+				</div>
+			</div>
+		</div>
+	</section>
+<a class="scrollToHome" href="page-dashboard-listing.html#"><i class="fas fa-arrow-up"></i></a>
+</div>
+{%endblock main%}

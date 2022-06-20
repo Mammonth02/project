@@ -1,0 +1,187 @@
+{%extends 'profile/body/body.html'%}
+{%block main%}
+<div class="wrapper">
+	<div class="preloader"></div>
+  
+	<!-- Our Dashbord -->
+	<section class="our-dashbord dashbord bgc-f9">
+		<div class="container-fluid">
+			<div class="row">
+        <div class="col-xxl-10 offset-xxl-2 dashboard_grid_space">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="extra-dashboard-menu dn-lg">
+                {%include 'profile/body/site_bar.html'%}
+              </div>
+            </div>
+          </div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="dashboard_navigationbar dn db-lg mt50">
+								<div class="dropdown">
+									<button onclick="myFunction()" class="dropbtn"><i class="fa fa-bars pr10"></i> Dashboard Navigation</button>
+									<ul id="myDropdown" class="dropdown-content">
+                    <li><a href="page-dashboard.html"><span class="flaticon-dashboard"></span>Dashboard</a></li>
+                    <li><a href="page-dashboard-profile.html"><span class="flaticon-user-2"></span>Profile</a></li>
+                    <li><a href="page-dashboard-listing.html"><span class="flaticon-list"></span>My Listing</a></li>
+                    <li><a href="page-dashboard-favorites.html"><span class="flaticon-heart"></span>Favorites</a></li>
+                    <li><a class="active" href="page-dashboard-add-listings.html"><span class="flaticon-plus"></span>Add Listing</a></li>
+                    <li><a href="page-dashboard-messages.html"><span class="flaticon-message"></span>Messages</a></li>
+                    <li><a href="page-login.html"><span class="flaticon-logout"></span>Logout</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xl-8">
+              <div class="col-lg-12 mb50">
+                <div class="breadcrumb_content">
+                  <h2 class="breadcrumb_title">Добавить автомобиль</h2>
+                  <p></p>
+                </div>
+              </div>
+						</div>
+					</div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="new_property_form">
+                <h4 class="title mb30">Additional</h4>
+                <form action="" method="post" enctype="multipart/form-data">
+                  {%csrf_token%}
+                  <div class="row">
+                    <div class="col-md-12">
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="ui_kit_select_search add_new_property mb20">
+                        <label class="form-label">{{form.сondition.label}}: </label>
+                        <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form.сondition }}</p>
+                              <div class="form-error">{{ form.сondition.errors }}</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="ui_kit_select_search add_new_property mb20">
+                        <label class="form-label">{{form.type_auto.label}}: </label>
+                        <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form.type_auto }}</p>
+                              <div class="form-error">{{ form.type_auto.errors }}</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="ui_kit_select_search add_new_property mb20">
+                        <label class="form-label">{{form.make.label}}: </label>
+                        <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form.make }}</p>
+                              <div class="form-error">{{ form.make.errors }}</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="ui_kit_select_search add_new_property mb20">
+                        <label class="form-label">{{form.drive_type.label}}: </label>
+                        <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form.drive_type }}</p>
+                              <div class="form-error">{{ form.drive_type.errors }}</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="ui_kit_select_search add_new_property mb20">
+                        <label class="form-label">{{form.fuel_type.label}}: </label>
+                        <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form.fuel_type }}</p>
+                              <div class="form-error">{{ form.fuel_type.errors }}</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="ui_kit_select_search add_new_property mb20">
+                        <label class="form-label">{{form.transmission.label}}: </label>
+                        <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form.transmission }}</p>
+                              <div class="form-error">{{ form.transmission.errors }}</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="ui_kit_select_search add_new_property mb20">
+                        <label class="form-label">{{form.color.label}}: </label>
+                        <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form.color }}</p>
+                              <div class="form-error">{{ form.color.errors }}</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="ui_kit_select_search add_new_property mb20">
+                        <label class="form-label">{{form.model.label}}: </label>
+                        <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form.model }}</p>
+                              <div class="form-error">{{ form.model.errors }}</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="ui_kit_select_search add_new_property mb20">
+                        <label class="form-label">{{form.mileage.label}}: </label>
+                        <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form.mileage }}</p>
+                              <div class="form-error">{{ form.mileage.errors }}</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="ui_kit_select_search add_new_property mb20">
+                        <label class="form-label">{{form.year.label}}: </label>
+                        <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form.year }}</p>
+                              <div class="form-error">{{ form.year.errors }}</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="ui_kit_select_search add_new_property mb20">
+                        <label class="form-label">{{form.engine_size.label}}: </label>
+                        <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form.engine_size }}</p>
+                              <div class="form-error">{{ form.engine_size.errors }}</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="ui_kit_select_search add_new_property mb20">
+                        <label class="form-label">{{form.doors.label}}: </label>
+                        <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form.doors }}</p>
+                              <div class="form-error">{{ form.doors.errors }}</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="ui_kit_select_search add_new_property mb20">
+                        <label class="form-label">{{form.cylinders.label}}: </label>
+                        <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form.cylinders }}</p>
+                              <div class="form-error">{{ form.cylinders.errors }}</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="ui_kit_select_search add_new_property mb20">
+                        <label class="form-label">{{form.vin.label}}: </label>
+                        <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form.vin }}</p>
+                              <div class="form-error">{{ form.vin.errors }}</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="ui_kit_select_search add_new_property mb20">
+                        <label class="form-label">{{form.prise.label}}: </label>
+                        <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form.prise }}</p>
+                              <div class="form-error">{{ form.prise.errors }}</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                      <div class="ui_kit_select_search add_new_property mb20">
+                        <label class="form-label">{{form.image.label}}: </label>
+                        <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form.image }}</p>
+                              <div class="form-error">{{ form.image.errors }}</div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="mb20">
+                        <label class="form-label">{{form.description.label}}: </label>
+                        <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form.description }}</p>
+                              <div class="form-error">{{ form.description.errors }}</div>
+                      </div>
+                    </div>
+                  </div>
+                  {{form1.as_p}}
+                  <button type="submit" class="btn btn-thm">Добавить</button>
+                </form>
+              </div>
+            </div>
+          </div>
+				</div>
+			</div>
+		</div>
+	</section>
+<a class="scrollToHome" href="page-dashboard-add-listings.html#"><i class="fas fa-arrow-up"></i></a>
+</div>
+{%endblock main%}

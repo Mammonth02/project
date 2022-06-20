@@ -1,0 +1,278 @@
+    {%load static%}
+        <!-- Featured Product  -->
+    <section class="featured-product">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="main-title text-center">
+                <h2>Featured Listings</h2>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="popular_listing_sliders row">
+                <!-- Nav tabs -->
+                <div class="nav nav-tabs col-lg-12 justify-content-center" role="tablist">
+                  <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All Status</button>
+                  <button class="nav-link" id="nav-shopping-tab" data-bs-toggle="tab" data-bs-target="#nav-shopping" role="tab" aria-controls="nav-shopping" aria-selected="false">New Cars</button>
+                  <button class="nav-link" id="nav-hotels-tab" data-bs-toggle="tab" data-bs-target="#nav-hotels" role="tab" aria-controls="nav-hotels" aria-selected="false">Used Cars</button>
+                </div>
+                <!-- Tab panes -->
+                <div class="tab-content col-lg-12" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="row">
+                      {%for c in all_cars%}
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="car-listing">
+                            <div class="thumb">
+                                <div class="tag">FEATURED</div>
+                                <img src="{{ c.image.url }}" alt="1.jpg">
+                                <div class="thmb_cntnt2">
+                                <ul class="mb0">
+                                    <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-photo-camera mr3"></span> 22</a></li>
+                                    <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-play-button mr3"></span> 3</a></li>
+                                </ul>
+                                </div>
+                                <div class="thmb_cntnt3">
+                                <ul class="mb0">
+                                    <li class="list-inline-item"><a href="index.html#"><span class="flaticon-shuffle-arrows"></span></a></li>
+                                    <li class="list-inline-item"><a href="index.html#"><span class="flaticon-heart"></span></a></li>
+                                </ul>
+                                </div>
+                            </div>
+                            <div class="details">
+                                <div class="wrapper">
+                                <h5 class="price">{{c.prise}}$</h5>
+                                <h6 class="title"><a href="{% url 'single_page' c.pk%}">{{c.make}} {{c.model}}</a></h6>
+                                <div class="listign_review">
+                                  <ul class="mb0">
+                                    {%for r, v in star_r.items%}
+                                      {%if r == c.id%}
+                                        {%for i in rrr%}
+                                          {%if v >= i%}
+                                            <li class="list-inline-item"><a href="page-car-single-v1.html#"><i class="fa fa-star"></i></a></li>
+                                          {%endif%}
+                                        {%endfor%}
+                                        <li class="list-inline-item"><a href="page-dashboard-favorites.html#">{{v}}</a></li>
+                                      {%endif%}
+                                    {%endfor%}
+                                    {%for r, v in len_r.items%}
+                                      {%if r == c.id%}
+                                        <li class="list-inline-item">({{v}} отзывов)</li>
+                                      {%endif%}
+                                    {%endfor%}
+                                  </ul>
+                                </div>
+                                </div>
+                                <div class="listing_footer">
+                                <ul class="mb0">
+                                    <li class="list-inline-item"><a href="index.html#"><span class="flaticon-road-perspective me-2"></span>{{c.mileage}}</a></li>
+                                    <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gas-station me-2"></span>{{c.fuel_type}}</a></li>
+                                    <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gear me-2"></span>{{c.transmission }}</a></li>
+                                </ul>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                      {%endfor%}
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="mbp_pagination mt10">
+                        <ul class="page_navigation">
+                          <li class="page-item">
+                            <a class="page-link" href="" tabindex="-1" aria-disabled="true"> <span class="fa fa-arrow-left"></span></a>
+                          </li>
+                            {%for p in all_cars.paginator.page_range%}
+                            {%if all_cars.number == p%}
+                                              <li class="page-item active" aria-current="page">
+                                                <a class="page-link" href="?page={{p}}">{{p}}<span class="sr-only"></span></a>
+                                              </li>
+                                            {%else%}
+                                              <li class="page-item">
+                                                <a class="page-link" href="?page={{p}}">{{p}}<span class="sr-only"></span></a>
+                                              </li>
+                                            {%endif%}
+                            {%endfor%}
+                            <li class="page-item">
+                              <a class="page-link" href=""><span class="fa fa-arrow-right"></span></a>
+                            </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-shopping" role="tabpanel" aria-labelledby="nav-shopping-tab">
+                    <div class="row">
+                      {%for c in new_cars%}
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="car-listing">
+                            <div class="thumb">
+                                <div class="tag">FEATURED</div>
+                                <img src="{{ c.image.url }}" alt="1.jpg">
+                                <div class="thmb_cntnt2">
+                                <ul class="mb0">
+                                    <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-photo-camera mr3"></span> 22</a></li>
+                                    <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-play-button mr3"></span> 3</a></li>
+                                </ul>
+                                </div>
+                                <div class="thmb_cntnt3">
+                                <ul class="mb0">
+                                    <li class="list-inline-item"><a href="index.html#"><span class="flaticon-shuffle-arrows"></span></a></li>
+                                    <li class="list-inline-item"><a href="index.html#"><span class="flaticon-heart"></span></a></li>
+                                </ul>
+                                </div>
+                            </div>
+                            <div class="details">
+                                <div class="wrapper">
+                                <h5 class="price">{{c.prise}}$</h5>
+                                <h6 class="title"><a href="page-car-single-v1.html">{{c.make}} {{c.model}}</a></h6>
+                                <div class="listign_review">
+                                  <ul class="mb0">
+                                    {%for r, v in star_r.items%}
+                                      {%if r == c.id%}
+                                        {%for i in rrr%}
+                                          {%if v >= i%}
+                                            <li class="list-inline-item"><a href="page-car-single-v1.html#"><i class="fa fa-star"></i></a></li>
+                                          {%endif%}
+                                        {%endfor%}
+                                        <li class="list-inline-item"><a href="page-dashboard-favorites.html#">{{v}}</a></li>
+                                      {%endif%}
+                                    {%endfor%}
+                                    {%for r, v in len_r.items%}
+                                      {%if r == c.id%}
+                                        <li class="list-inline-item">({{v}} отзывов)</li>
+                                      {%endif%}
+                                    {%endfor%}
+                                  </ul>
+                                </div>
+                                </div>
+                                <div class="listing_footer">
+                                <ul class="mb0">
+                                    <li class="list-inline-item"><a href="index.html#"><span class="flaticon-road-perspective me-2"></span>{{c.mileage}}</a></li>
+                                    <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gas-station me-2"></span>{{c.fuel_type}}</a></li>
+                                    <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gear me-2"></span>{{c.transmission }}</a></li>
+                                </ul>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                      {%endfor%}
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="mbp_pagination mt10">
+                        <ul class="page_navigation">
+                          <li class="page-item">
+                            <a class="page-link" href="" tabindex="-1" aria-disabled="true"> <span class="fa fa-arrow-left"></span></a>
+                          </li>
+                            {%for p in new_cars.paginator.page_range%}
+                            {%if new_cars.number == p%}
+                                              <li class="page-item active" aria-current="page">
+                                                <a class="page-link" href="?page={{p}}">{{p}}<span class="sr-only"></span></a>
+                                              </li>
+                                            {%else%}
+                                              <li class="page-item">
+                                                <a class="page-link" href="?page={{p}}">{{p}}<span class="sr-only"></span></a>
+                                              </li>
+                                            {%endif%}
+                            {%endfor%}
+                            <li class="page-item">
+                              <a class="page-link" href=""><span class="fa fa-arrow-right"></span></a>
+                            </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-hotels" role="tabpanel" aria-labelledby="nav-hotels-tab">
+                    <div class="row">
+                      {%for c in used_cars%}
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="car-listing">
+                            <div class="thumb">
+                                <div class="tag">FEATURED</div>
+                                <img src="{{ c.image.url }}" alt="1.jpg">
+                                <div class="thmb_cntnt2">
+                                <ul class="mb0">
+                                    <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-photo-camera mr3"></span> 22</a></li>
+                                    <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-play-button mr3"></span> 3</a></li>
+                                </ul>
+                                </div>
+                                <div class="thmb_cntnt3">
+                                <ul class="mb0">
+                                    <li class="list-inline-item"><a href="index.html#"><span class="flaticon-shuffle-arrows"></span></a></li>
+                                    <li class="list-inline-item"><a href="index.html#"><span class="flaticon-heart"></span></a></li>
+                                </ul>
+                                </div>
+                            </div>
+                            <div class="details">
+                                <div class="wrapper">
+                                <h5 class="price">{{c.prise}}$</h5>
+                                <h6 class="title"><a href="page-car-single-v1.html">{{c.make}} {{c.model}}</a></h6>
+                                <div class="listign_review">
+                                  <ul class="mb0">
+                                    {%for r, v in star_r.items%}
+                                      {%if r == c.id%}
+                                        {%for i in rrr%}
+                                          {%if v >= i%}
+                                            <li class="list-inline-item"><a href="page-car-single-v1.html#"><i class="fa fa-star"></i></a></li>
+                                          {%endif%}
+                                        {%endfor%}
+                                        <li class="list-inline-item"><a href="page-dashboard-favorites.html#">{{v}}</a></li>
+                                      {%endif%}
+                                    {%endfor%}
+                                    {%for r, v in len_r.items%}
+                                      {%if r == c.id%}
+                                        <li class="list-inline-item">({{v}} отзывов)</li>
+                                      {%endif%}
+                                    {%endfor%}
+                                  </ul>
+                                </div>
+                                </div>
+                                <div class="listing_footer">
+                                <ul class="mb0">
+                                    <li class="list-inline-item"><a href="index.html#"><span class="flaticon-road-perspective me-2"></span>{{c.mileage}}</a></li>
+                                    <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gas-station me-2"></span>{{c.fuel_type}}</a></li>
+                                    <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gear me-2"></span>{{c.transmission }}</a></li>
+                                </ul>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                      {%endfor%}
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="mbp_pagination mt10">
+                        <ul class="page_navigation">
+                          <li class="page-item">
+                            <a class="page-link" href="" tabindex="-1" aria-disabled="true"> <span class="fa fa-arrow-left"></span></a>
+                          </li>
+                            {%for p in used_cars.paginator.page_range%}
+                            {%if used_cars.number == p%}
+                                              <li class="page-item active" aria-current="page">
+                                                <a class="page-link" href="?page={{p}}">{{p}}<span class="sr-only"></span></a>
+                                              </li>
+                                            {%else%}
+                                              <li class="page-item">
+                                                <a class="page-link" href="?page={{p}}">{{p}}<span class="sr-only"></span></a>
+                                              </li>
+                                            {%endif%}
+                            {%endfor%}
+                            <li class="page-item">
+                              <a class="page-link" href=""><span class="fa fa-arrow-right"></span></a>
+                            </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt20">
+            <div class="col-lg-12">
+              <div class="text-center">
+                <a href="page-list-v1.html" class="more_listing">Show All Cars <span class="icon"><span class="fas fa-plus"></span></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
