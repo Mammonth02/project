@@ -5,7 +5,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-8">
               <div class="main-title text-center">
-                <h2>Featured Listings</h2>
+                <h2>Подбор по состоянии</h2>
               </div>
             </div>
           </div>
@@ -13,10 +13,10 @@
             <div class="col-lg-12">
               <div class="popular_listing_sliders row">
                 <!-- Nav tabs -->
-                <div class="nav nav-tabs col-lg-12 justify-content-center" role="tablist">
-                  <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All Status</button>
-                  <button class="nav-link" id="nav-shopping-tab" data-bs-toggle="tab" data-bs-target="#nav-shopping" role="tab" aria-controls="nav-shopping" aria-selected="false">New Cars</button>
-                  <button class="nav-link" id="nav-hotels-tab" data-bs-toggle="tab" data-bs-target="#nav-hotels" role="tab" aria-controls="nav-hotels" aria-selected="false">Used Cars</button>
+                <div class="nav nav-tabs col-lg-12 justify-content-center" role="tablist" >
+                  <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" style="width: 100px; text-align: center;">Все</button>
+                  <button class="nav-link" id="nav-shopping-tab" data-bs-toggle="tab" data-bs-target="#nav-shopping" role="tab" aria-controls="nav-shopping" aria-selected="false" style="width: 100px; text-align: center;">Новые</button>
+                  <button class="nav-link" id="nav-hotels-tab" data-bs-toggle="tab" data-bs-target="#nav-hotels" role="tab" aria-controls="nav-hotels" aria-selected="false" style="width: 100px; text-align: center;">Б/У</button>
                 </div>
                 <!-- Tab panes -->
                 <div class="tab-content col-lg-12" id="nav-tabContent">
@@ -125,7 +125,7 @@
                             <div class="details">
                                 <div class="wrapper">
                                 <h5 class="price">{{c.prise}}$</h5>
-                                <h6 class="title"><a href="page-car-single-v1.html">{{c.make}} {{c.model}}</a></h6>
+                                <h6 class="title"><a href="{% url 'single_page' c.pk%}">{{c.make}} {{c.model}}</a></h6>
                                 <div class="listign_review">
                                   <ul class="mb0">
                                     {%for r, v in star_r.items%}
@@ -206,7 +206,7 @@
                             <div class="details">
                                 <div class="wrapper">
                                 <h5 class="price">{{c.prise}}$</h5>
-                                <h6 class="title"><a href="page-car-single-v1.html">{{c.make}} {{c.model}}</a></h6>
+                                <h6 class="title"><a href="{% url 'single_page' c.pk%}">{{c.make}} {{c.model}}</a></h6>
                                 <div class="listign_review">
                                   <ul class="mb0">
                                     {%for r, v in star_r.items%}
@@ -264,13 +264,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="row mt20">
-            <div class="col-lg-12">
-              <div class="text-center">
-                <a href="page-list-v1.html" class="more_listing">Show All Cars <span class="icon"><span class="fas fa-plus"></span></span></a>
               </div>
             </div>
           </div>

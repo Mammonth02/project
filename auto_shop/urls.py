@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='home'),
     path('filter_auto', FilterAuto.as_view(), name='filter_auto'),
+    path('filter_auto_index', FilterAutoIndex.as_view(), name='filter_auto_index'),
     path('single_page:<int:id>', single, name='single_page'),
     path('register/', RegisterUser.as_view(), name='register'),
     path('login/', LoginUser.as_view(), name='login'),

@@ -16,10 +16,10 @@
             {%for k, i in view.get_cat.items%}
             <li>
               <div class="dropdown">
-                <button class="btn btn-block dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="  height: 49px;">
+                <button class="btn btn-block dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="height: 50px;">
                   <h5 class="subtitle" style="margin: 0px;">{{k}}</h5>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="width: 244px;">
                   {%for m in i%}
                   <div class="ui_kit_checkbox" style="margin-left: 10px;">
                     <div class="form-check mb20">
@@ -39,9 +39,9 @@
                     <button class="btn btn-block dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="  height: 49px;">
                       <h5 class="subtitle" style="margin: 0px;">{{k}}</h5>
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="width: 244px;">
                       {%for m in v%}
-                        <div class="ui_kit_checkbox" style="margin-left: 10px;">
+                        <div class="ui_kit_checkbox" style="margin-left: 10px;" >
                           <div class="form-check mb20">
                             <input class="form-check-input" type="checkbox" value="{{m}}" checked id="flexCheckPetrol" name="{{k}}">
                             <label class="form-check-label">{{m}}</label>
@@ -67,10 +67,10 @@
             </div>
               <li>
                 <div class="search_option_button">
-                  <button type="submit" class="btn btn-block btn-thm"><span class="flaticon-magnifiying-glass mr10"></span> Search</button>
+                  <button type="submit" class="btn btn-block btn-thm"><span class="flaticon-magnifiying-glass mr10"></span>Поиск</button>
                 </div>
               </li>
-            </form>
+             </form>
           </ul>
         </div>
       </div>

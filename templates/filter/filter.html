@@ -1,5 +1,6 @@
 {%extends 'home/body.html'%}
 {%block main%}
+{%load static%}
 
   
     <div class="header_top home3_style dn-992">
@@ -193,201 +194,7 @@
   <!-- Listing Grid View -->
   <section class="our-listing bgc-white pb30-991 inner_page_section_spacing">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="listing_sidebar">
-            <div class="sidebar_content_details style3">
-              <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
-              <div class="sidebar_listing_list style2 mobile_sytle_sidebar mb0">
-                <div class="siderbar_widget_header">
-                  <h4 class="title mb0">Search Filters<a class="filter_closed_btn float-end" href="page-list-v6.html#"><span class="fas fa-times"></span></a></h4>
-                </div>
-                <div class="sidebar_advanced_search_widget">
-                  <ul class="sasw_list mb0">
-                    <li class="search_area">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Enter Keyword">
-                      </div>
-                    </li>
-                    <li>
-                      <div class="search_option_two">
-                        <div class="candidate_revew_select">
-                          <div class="dropdown bootstrap-select w100 show-tick">
-                            <select class="selectpicker w100 show-tick" tabindex="-98">
-                              <option>Condition</option>
-                              <option>Most Recent</option>
-                              <option>Recent</option>
-                              <option>Best Selling</option>
-                              <option>Old Review</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="search_option_two">
-                        <div class="candidate_revew_select">
-                          <div class="dropdown bootstrap-select w100 show-tick">
-                            <select class="selectpicker w100 show-tick" tabindex="-98">
-                              <option>Select Makes</option>
-                              <option>Audi</option>
-                              <option>Bentley</option>
-                              <option>BMW</option>
-                              <option>Ford</option>
-                              <option>Honda</option>
-                              <option>Mercedes</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="search_option_two">
-                        <div class="candidate_revew_select">
-                          <div class="dropdown bootstrap-select w100 show-tick">
-                            <select class="selectpicker w100 show-tick" tabindex="-98">
-                              <option>Select Models</option>
-                              <option>A3 Sportback</option>
-                              <option>A4</option>
-                              <option>A6</option>
-                              <option>Q5</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="search_option_two">
-                        <div class="candidate_revew_select">
-                          <div class="dropdown bootstrap-select w100 show-tick">
-                            <select class="selectpicker w100 show-tick" tabindex="-98">
-                              <option>Select Type</option>
-                              <option>Convertible</option>
-                              <option>Coupe</option>
-                              <option>Hatchback</option>
-                              <option>Sedan</option>
-                              <option>SUV</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="search_option_two">
-                        <div class="candidate_revew_select">
-                          <div class="dropdown bootstrap-select w100 show-tick">
-                            <select class="selectpicker w100 show-tick" tabindex="-98">
-                              <option>Year</option>
-                              <option>1967</option>
-                              <option>1990</option>
-                              <option>2000</option>
-                              <option>2002</option>
-                              <option>2005</option>
-                              <option>2010</option>
-                              <option>2015</option>
-                              <option>2020</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="sidebar_priceing_slider_mobile">
-                        <div class="wrapper">
-                          <h5 class="subtitle">Filter by price</h5>
-                          <div class="mt20 ml10" id="slider"></div>
-                          <span id="slider-range-value1"></span>
-                          <span id="slider-range-value2"></span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <h5 class="subtitle">Fuel Type</h5>
-                      <div class="ui_kit_checkbox">
-                        <div class="form-check mb20">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckPetrolSbp">
-                          <label class="form-check-label" for="flexCheckPetrolSbp">Petrol (676)</label>
-                        </div>
-                        <div class="form-check mb20">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDieselSbp">
-                          <label class="form-check-label" for="flexCheckDieselSbp">Diesel (9,784)</label>
-                        </div>
-                        <div class="form-check mb20">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckElectricSbp">
-                          <label class="form-check-label" for="flexCheckElectricSbp">Electric (6.584)</label>
-                        </div>
-                        <div class="form-check mb30">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckHybridSbp">
-                          <label class="form-check-label" for="flexCheckHybridSbp">Hyrbid (97)</label>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <h5 class="subtitle">Transmission</h5>
-                      <div class="ui_kit_checkbox">
-                        <div class="form-check mb20">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckAutometicSbp">
-                          <label class="form-check-label" for="flexCheckAutometicSbp">Automatic (6,676)</label>
-                        </div>
-                        <div class="form-check mb30">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckManualSbp">
-                          <label class="form-check-label" for="flexCheckManualSbp">Manual (9,784)</label>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <h5 class="subtitle">Features</h5>
-                      <div class="sidebar_feature_checkbox">
-                        <div class="wrapper">
-                          <div class="form-check mb15">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultSbp">
-                            <label class="form-check-label" for="flexCheckDefaultSbp">Adaptive Cruise Control (6,676)</label>
-                          </div>
-                          <div class="form-check mb15">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1Sbp">
-                            <label class="form-check-label" for="flexCheckDefault1Sbp">Cooled Seats (9,784)</label>
-                          </div>
-                          <div class="form-check mb15">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2Sbp">
-                            <label class="form-check-label" for="flexCheckDefault2Sbp">Keyless Start (9,784)</label>
-                          </div>
-                          <div class="form-check mb15">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3Sbp">
-                            <label class="form-check-label" for="flexCheckDefault3Sbp">Navigation System (9,784)</label>
-                          </div>
-                          <div class="form-check mb15">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4Sbp">
-                            <label class="form-check-label" for="flexCheckDefault4Sbp">Remote Start (9,784)</label>
-                          </div>
-                          <div class="form-check mb15">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault5Sbp">
-                            <label class="form-check-label" for="flexCheckDefault5Sbp">Cooled Seats (9,784)</label>
-                          </div>
-                          <div class="form-check mb15">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault6Sbp">
-                            <label class="form-check-label" for="flexCheckDefault6Sbp">Keyless Start (9,784)</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault7Sbp">
-                            <label class="form-check-label" for="flexCheckDefault7Sbp">Navigation System (9,784)</label>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="search_option_button">
-                        <button type="submit" class="btn btn-block btn-thm"><span class="flaticon-magnifiying-glass mr10"></span> Search</button>
-                      </div>
-                    </li>
-                    <li class="text-center"><a class="reset-filter" href="page-list-v6.html#">Reset Filter</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
+        <div class="row">
         {%include 'filter/site_bar.html'%}
         <div class="col-lg-8 col-xl-9">
           <div class="row">
@@ -401,7 +208,7 @@
                 <div class="page_control_shorting right_area text-end tac-lg">
                   <ul>
                     <li class="list-inline-item mb10-400"> <a id="open2" class="filter_open_btn style2 dn db-md" href="page-list-v6.html#"><img class="mr10" src="images/icon/filter-icon.svg" alt="filter-icon.svg"> Filters</a> </li>
-                    <li class="list-inline-item short_by_text listone">Sort by:</li>
+                    <li class="list-inline-item short_by_text listone">Cортировать по:</li>
                     <li class="list-inline-item listwo">
                       <select class="selectpicker show-tick">
                         <option>Date: newest First</option>
@@ -411,8 +218,6 @@
                         <option>Old Review</option>
                       </select>
                     </li>
-                    <li class="list-inline-item list-gird"><a href="page-list-v6.html#"><img src="images/icon/list-grid.svg" alt="list-grid.svg"></a></li>
-                    <li class="list-inline-item list-list"><a href="page-list-v6.html#"><img src="images/icon/list-list.svg" alt="list-list.svg"></a></li>
                   </ul>
                 </div>
               </div>
@@ -444,6 +249,8 @@
                     <h6 class="title"><a href="{% url 'single_page' c.pk%}">{{c.make}} {{c.model}}</a></h6>
                     <div class="listign_review">
                       <ul class="mb0">
+                        <p>{{star_r}}</p>
+                        <p>{{all_cars}}</p>
                         {%for r, v in star_r.items%}
                           {%if r == c.id%}
                             {%for i in rrr%}

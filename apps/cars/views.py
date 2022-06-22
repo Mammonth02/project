@@ -1,3 +1,4 @@
+from typing import Type
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import AuthenticationForm
@@ -17,6 +18,19 @@ from django.contrib.auth import get_user_model
 def index(request):
     all_cars = Auto.objects.all()
     
+    cat = {
+        'Марка': Make.objects.all(),
+        'Тип': AutoType.objects.all()
+    }
+
+    drp = {
+            'Каробка передач': set(),
+            'Состояние': set(),
+        }
+    for a in all_cars:
+            drp['Каробка передач'].add(a.transmission)
+            drp['Состояние'].add(a.сondition)
+
     reviewses = {}
     for i in all_cars:
         reviewses[i] = Reviews.objects.filter(auto = i)
@@ -37,7 +51,7 @@ def index(request):
             star_r[k] = 'нет отзывов'
     rrr = [0.5, 1.5, 2.5, 3.5, 4.5]
     
-    paginator = Paginator(all_cars, 8)
+    paginator = Paginator(all_cars, 8   )
     new_cars = Paginator(Auto.objects.filter(сondition = 'Новый'), 8)
     used_cars = Paginator(Auto.objects.filter(сondition = 'Б/У'), 8)
     page_number = request.GET.get('page')
@@ -52,6 +66,9 @@ def index(request):
             'len_r': len_r,
             'star_r': star_r,
             'rrr': rrr,
+            'drp': drp,
+            'cat': cat,
+            'type': AutoType.objects.all()
         }
     return render(request, 'home/index.html', context)
 
@@ -163,7 +180,6 @@ class FilterObj():
         return {'Марка': Make.objects.all(), 'Тип': AutoType.objects.all()}
 
     def get_drp(self):
-
         auto_all =  Auto.objects.all()
         drp = {
             'Каробка передач': set(),
@@ -210,7 +226,7 @@ class AutoAll(FilterObj, generic.ListView):
             len_r[k.id] = len(v)
             len_c = []
             for rev in v:
-                r = round((rev.comfort + rev.performance + rev.exterior_styling + rev.interior_design + rev.value_for_the_money +rev.reliability) / 6)
+                r = round((rev.comfort + rev.performance + rev.exterior_styling + rev.interior_design + rev.value_for_the_money + rev.reliability) / 6)
                 len_c.append(r)
             star = 0
             for i in len_c:
@@ -248,6 +264,28 @@ class FilterAuto(FilterObj, generic.ListView):
              cylinders__in=self.request.GET.getlist("Цилиндры"),
              doors__in=self.request.GET.getlist("Двери"),
              engine_size__in=self.request.GET.getlist("Обьём мотора"),
+            )   
+        return queryset
+
+    def get_context_data(self, *, odject_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['len_a'] = len(queryset)
+
+        return context
+
+
+class FilterAutoIndex(FilterObj, generic.ListView):
+
+    template_name = "filter/filter.html"
+    context_object_name = 'auto_all'
+    
+    def get_queryset(self):
+        global queryset
+        queryset = Auto.objects.filter(
+             make__in=self.request.GET.getlist("Марка"),
+             transmission__in=self.request.GET.getlist("Каробка передач"),
+             сondition__in=self.request.GET.getlist("Состояние"),
+             type_auto__in=self.request.GET.getlist("Тип"),
             )   
         return queryset
 
