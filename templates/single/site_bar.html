@@ -15,32 +15,17 @@
           <p class="mb0 tdu"><span class="flaticon-email pr5 vam"></span>{{car.user.email}}</p>
         </div>
       </div>
-      <h4 class="mb30">Contact Seller</h4>
-      <form action="page-car-single-v1.html#">
+      <h4 class="mb30">Hаписать продавцу</h4>
+      <form action="{%url 'chat' car.user.pk%}" method="post">
+        {%csrf_token%}
         <div class="row">
           <div class="col-lg-12">
             <div class="mb-3">
-              <input class="form-control form_control" type="text" placeholder="Name">
+              {{form_m.text}}
             </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="mb-3">
-              <input class="form-control form_control" type="text" placeholder="Phone">
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="mb-3">
-              <input class="form-control form_control" type="email" placeholder="Email">
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="mb-3">
-              <textarea class="form-control" rows="6">I am interested in a price quote on this vehicle. Please contact me at your earliest convenience with your best price for this vehicle.</textarea>
-            </div>
-            <button type="submit" class="btn btn-block btn-thm mt10 mb20">Send Message</button>
-            <button type="submit" class="btn btn-block btn-whatsapp mb0"><span class="flaticon-whatsapp mr10 text-white"></span>WhatsApp</button>
           </div>
         </div>
+        <button type="submit" class="btn dbxshad btn-lg btn-thm circle" style="width: 334px;">Отправить</button>
       </form>
     </div>
   </div>

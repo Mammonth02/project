@@ -32,13 +32,9 @@
               <div class="share_content">
                   <form action="{%url 'single_page' car.pk%}" method="post">
                     {%csrf_token%}
-                    <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form_l.user }}</p>
-                    <div class="form-error">{{ form_l.user.errors }}</div>
-                    <p ><label class="form-label" for="{{ form.name.id_for_label }}" ></label>{{ form_l.auto }}</p>
-                    <div class="form-error">{{ form_l.auto.errors }}</div>
                     
                     {%if like !=  Null%}
-                      <li class="list-inline-item"><button class="flaticon-heart btn btn-thm shadow-none"><a href="{% url 'delete_like' like.pk%}">удалить лайк</a></button></li>
+                      <li class="list-inline-item"><a class="main-btn" href="{% url 'delete_like' like.pk%}" class="btn btn-info">Удалить лайк</a></li>
                     {%else%}
                       <li class="list-inline-item"><button type="submit" class="flaticon-heart btn btn-primary shadow-none" ><a href=""></a></button></li>
                     {%endif%}

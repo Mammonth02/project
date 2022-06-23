@@ -134,3 +134,5 @@ class Reviews(models.Model):
     class Meta:
         verbose_name_plural = 'Коментарии'
         verbose_name= 'Коментарий'
+
+

@@ -44,6 +44,7 @@ urlpatterns = [
 
 
     path('filter', AutoAll.as_view(), name='filter'),
+    path('chat:<int:id>', chat, name='chat'),
 
 ]
 

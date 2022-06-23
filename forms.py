@@ -2,7 +2,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 from apps.cars.models import *
+from apps.profile1.models import *
 from django.contrib.auth import get_user_model
+from django.forms import Textarea
 
 
 class RegisterUserForm(UserCreationForm):
@@ -10,6 +12,17 @@ class RegisterUserForm(UserCreationForm):
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
 
+class ChatForm(forms.ModelForm):
+    class Meta:
+        model = Chat
+        fields = ['text']
+
+        widgets = {
+            'text': Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Напиши сообшение'
+            })
+        }
 
 class ReviewsAddForm(forms.ModelForm):
     class Meta:

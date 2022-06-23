@@ -1,14 +1,13 @@
 from django import template
 from django.shortcuts import render
 from apps.cars.models import *
+from datetime import date, time
 
 
 
 register = template.Library()
 
-# @register.simple_tag()
-# def navbar():
-#     like_auto = Auto_like.objects.filter(user = request.user)
-#     like_len = len(like_auto)
-
-#     return like_len
+@register.simple_tag()
+def time():
+    now = date.today()
+    return now

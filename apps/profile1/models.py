@@ -6,6 +6,7 @@ from django.contrib.auth.models import AbstractUser
 
 from django.contrib.auth.models import User
 
+
 class Chat(models.Model):
     sender = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='sender', null=True)
     recipient = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='recipientc', null=True)
@@ -18,4 +19,4 @@ class Chat(models.Model):
 
     class Meta:
             verbose_name_plural = 'Coобшения'
-            verbose_name= 'Сообшение    '
+            verbose_name= 'Сообшение'

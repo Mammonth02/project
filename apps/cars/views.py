@@ -14,23 +14,8 @@ from forms import *
 from django.contrib.auth import get_user_model
 
 # Create your views here.
-
-def index(request):
+def rz():
     all_cars = Auto.objects.all()
-    
-    cat = {
-        'Марка': Make.objects.all(),
-        'Тип': AutoType.objects.all()
-    }
-
-    drp = {
-            'Каробка передач': set(),
-            'Состояние': set(),
-        }
-    for a in all_cars:
-            drp['Каробка передач'].add(a.transmission)
-            drp['Состояние'].add(a.сondition)
-
     reviewses = {}
     for i in all_cars:
         reviewses[i] = Reviews.objects.filter(auto = i)
@@ -50,6 +35,25 @@ def index(request):
         else:
             star_r[k] = 'нет отзывов'
     rrr = [0.5, 1.5, 2.5, 3.5, 4.5]
+    return [star_r, rrr, len_r, all_cars]
+
+def index(request):
+    all_cars = Auto.objects.all()
+    cat = {
+        'Марка': Make.objects.all(),
+        'Тип': AutoType.objects.all()
+    }
+
+
+
+    drp = {
+            'Каробка передач': set(),
+            'Состояние': set(),
+        }
+    for a in all_cars:
+            drp['Каробка передач'].add(a.transmission)
+            drp['Состояние'].add(a.сondition)
+
     
     paginator = Paginator(all_cars, 8   )
     new_cars = Paginator(Auto.objects.filter(сondition = 'Новый'), 8)
@@ -63,9 +67,9 @@ def index(request):
             'all_cars': all_cars,
             'new_cars': new_cars,
             'used_cars': used_cars,
-            'len_r': len_r,
-            'star_r': star_r,
-            'rrr': rrr,
+            'len_r': rz()[2],
+            'star_r': rz()[0],
+            'rrr': rz()[1],
             'drp': drp,
             'cat': cat,
             'type': AutoType.objects.all()
@@ -119,6 +123,7 @@ def single(request, id):
     if request.method == 'POST':
         form = ReviewsAddForm(request.POST)
         form_l = AutolikeForm(request.POST)
+        form_m = ChatForm(request.POST)
         if form.is_valid():
             form = form.save(commit=False)
             form.user = request.user
@@ -131,12 +136,20 @@ def single(request, id):
             form_l.auto = car
             form_l.save()
             return redirect('single_page', car.id)
+        if form_m.is_valid():
+            form_m = form_m.save(commit=False)
+            form_m.sender = request.user
+            form_m.recipient = car.user
+            form_m.save()
+            return redirect('chat', car.user.id)
     else:
         form = ReviewsAddForm()
         form_l = AutolikeForm()
+        form_m = ChatForm()
 
     context['form']= form
     context['form_l']= form_l
+    context['form_m']= form_m
 
     return render(request, 'single/single_page.html', context)
 
@@ -173,7 +186,7 @@ def delete_like(request, id):
         like = Auto_like.objects.get(id=id)
         car = Auto.objects.get(id = like.auto_id)
         like.delete()
-        return HttpResponseRedirect(f"single_page:{car.id}")
+        return redirect("single_page", car.id)
 
 class FilterObj():
     def get_cat(self):
@@ -186,10 +199,6 @@ class FilterObj():
             'Тип привода': set(),
             'Состояние': set(),
             'Тип топлива': set(),
-            'Год': set(),
-            'Обьём мотора': set(),
-            'Цилиндры': set(),
-            'Двери': set(),
             'Цвет': set(),
         
         }
@@ -198,10 +207,6 @@ class FilterObj():
             drp['Тип привода'].add(a.drive_type)
             drp['Состояние'].add(a.сondition)
             drp['Тип топлива'].add(a.fuel_type)
-            drp['Год'].add(a.year)
-            drp['Обьём мотора'].add(a.engine_size)
-            drp['Цилиндры'].add(a.cylinders)
-            drp['Двери'].add(a.doors)
             drp['Цвет'].add(a.color)
 
         return drp
@@ -215,32 +220,10 @@ class AutoAll(FilterObj, generic.ListView):
 
     def get_context_data(self, *, odject_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        all_cars = Auto.objects.all()
-        reviewses = {}
-        for i in all_cars:
-            reviewses[i] = Reviews.objects.filter(auto = i)
-        len_r = {}
-        star_r = {}
-        for k, v in reviewses.items():
-            len_r[k.id] = len(v)
-            len_c = []
-            for rev in v:
-                r = round((rev.comfort + rev.performance + rev.exterior_styling + rev.interior_design + rev.value_for_the_money + rev.reliability) / 6)
-                len_c.append(r)
-            star = 0
-            for i in len_c:
-                star += i
-            if len(len_c) != 0:
-                star_r[k.id] = round(star / len(len_c), 1)
-            else:
-                star_r[k] = 'нет отзывов'
-        rrr = [0.5, 1.5, 2.5, 3.5, 4.5]
-
-        context['len_r'] = len_r
-        context['rrr'] = rrr
-        context['star_r'] = star_r
-        context['len_a'] = len(all_cars)
+        context['len_r'] = rz()[2]
+        context['rrr'] = rz()[1]
+        context['star_r'] = rz()[0]
+        context['len_a'] = len(rz()[3])
 
         return context
         
@@ -260,16 +243,27 @@ class FilterAuto(FilterObj, generic.ListView):
              fuel_type__in=self.request.GET.getlist("Тип топлива"),
              type_auto__in=self.request.GET.getlist("Тип"),
              color__in=self.request.GET.getlist("Цвет"),
-             year__in=self.request.GET.getlist("Год"),
-             cylinders__in=self.request.GET.getlist("Цилиндры"),
-             doors__in=self.request.GET.getlist("Двери"),
-             engine_size__in=self.request.GET.getlist("Обьём мотора"),
+             
+             prise__lte=int(self.request.GET.get("max_prise")),
+             prise__gte=int(self.request.GET.get("min_prise")),
+
+             cylinders__lte=int(self.request.GET.get("max_s")),
+             cylinders__gte=int(self.request.GET.get("min_s")),
+
+             engine_size__lte=int(self.request.GET.get("max_o")),
+             engine_size__gte=int(self.request.GET.get("min_o")),
+
+             year__lte=int(self.request.GET.get("max_year")),
+             year__gte=int(self.request.GET.get("min_year")),
             )   
         return queryset
 
     def get_context_data(self, *, odject_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['len_a'] = len(queryset)
+        context['len_r'] = rz()[2]
+        context['rrr'] = rz()[1]
+        context['star_r'] = rz()[0]
 
         return context
 
@@ -292,5 +286,8 @@ class FilterAutoIndex(FilterObj, generic.ListView):
     def get_context_data(self, *, odject_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['len_a'] = len(queryset)
+        context['len_r'] = rz()[2]
+        context['rrr'] = rz()[1]
+        context['star_r'] = rz()[0]
 
         return context

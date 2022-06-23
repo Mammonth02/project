@@ -1,4 +1,4 @@
-{% load static %}
+{% load static cars%}
   <!-- header top -->
   <div class="header_top home3_style dashbord_style dn-992">
     <div class="container-fluid">
@@ -8,7 +8,7 @@
             <ul class="mb0">
               <li class="list-inline-item"><a href="page-dashboard.html#"><span class="flaticon-phone-call"></span>1-800-458-56987</a></li>
               <li class="list-inline-item"><a href="page-dashboard.html#"><span class="flaticon-map"></span>47 Bakery Street, London, UK</a></li>
-              <li class="list-inline-item"><a href="page-dashboard.html#"><span class="flaticon-clock"></span>Mon - Fri 8:00 - 18:00</a></li>
+              <li class="list-inline-item"><a href="page-dashboard.html#"><span class="flaticon-clock"></span>{%time%}</a></li>
             </ul>
           </div>
         </div>
@@ -20,7 +20,8 @@
               <li class="list-inline-item"><a href="page-dashboard.html#"><span class="fab fa-instagram"></span></a></li>
               <li class="list-inline-item"><a href="page-dashboard.html#"><span class="fab fa-linkedin"></span></a></li>
               {%if request.user.is_authenticated%}
-                <li class="list-inline-item"><a href="{%url 'profile' pk=request.user.id%}">{{user.username}}      </a><a href="{%url 'logout'%}" data-bs-target="#logInModal">Выйти</a></li>
+                <li class="list-inline-item"><a href="{%url 'profile' pk=request.user.id%}">{{user.username}}</a></li>
+                <li class="list-inline-item"><a href="{%url 'logout'%}">Выйти</a></li>
               {%else%}
                 <li class="list-inline-item"><a href="{%url 'login'%}">Войти</a></li>
                 <li class="list-inline-item"><a href="{%url 'register'%}">Регистрация</a></li>
@@ -31,14 +32,45 @@
       </div>
     </div>
   </div>
-  
+
+<!-- это не трогоать -->
+<div class="header_top home3_style dn-992">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-xl-7">
+        <div class="header_top_contact_opening_widget text-center text-md-start">
+          <ul class="mb0">
+            <li class="list-inline-item"><a href="page-list-v6.html#"><span class="flaticon-phone-call"></span>1-800-458-56987</a></li>
+            <li class="list-inline-item"><a href="page-list-v6.html#"><span class="flaticon-map"></span>47 Bakery Street, London, UK</a></li>
+            <li class="list-inline-item"><a href="page-list-v6.html#"><span class="flaticon-clock"></span>Mon - Fri 8:00 - 18:00</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4 col-xl-5">
+        <div class="header_top_social_widgets text-center text-md-end">
+          <ul class="m0">
+            <li class="list-inline-item"><a href="page-list-v6.html#"><span class="fab fa-facebook-f"></span></a></li>
+            <li class="list-inline-item"><a href="page-list-v6.html#"><span class="fab fa-twitter"></span></a></li>
+            <li class="list-inline-item"><a href="page-list-v6.html#"><span class="fab fa-instagram"></span></a></li>
+            <li class="list-inline-item"><a href="page-list-v6.html#"><span class="fab fa-linkedin"></span></a></li>
+            <li class="list-inline-item"><a href="page-list-v6.html#" data-bs-toggle="modal" data-bs-target="#logInModal">Login</a></li>
+            <li class="list-inline-item"><a href="page-list-v6.html#" data-bs-toggle="modal" data-bs-target="#logInModal">Register</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- это не трогать -->
+
+{%block mainheader%}
   <!-- Main Header Nav -->
-  <header class="header-nav menu_style_home_one home3_style dashbord_style main-menu">
+  <header class="header-nav menu_style_home_one home3_style main-menu">
     <!-- Ace Responsive Menu -->
-    <nav class="posr"> 
-      <div class="container-fluid"> 
+    <nav> 
+      <div class="container posr"> 
         <!-- Menu Toggle btn-->
-        <div class="menu-toggle">
+        <div class="menu-toggle" style="display: none;">
           <button type="button" id="menu-btn">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -51,13 +83,13 @@
         </a>
         <!-- Responsive Menu Structure-->
         <ul id="respMenu" class="ace-responsive-menu menu_list_custom_code wa text-end" data-menu-style="horizontal">
-          <li> <a href="{% url 'home'%}"><span class="title">Home</span></a>
-          </li>
-          <li> <a href="page-dashboard.html#"><span class="title">Explore</span></a>
+           <a href="{%url 'home'%}"><span class="title">Home</span><span class="arrow "></span></a>
+
+          <li> <a href="page-list-v6.html#"><span class="title">Explore</span></a>
             <!-- Level Two-->
-            <ul>
-              <li> <a href="page-dashboard.html#">User Info</a> 
-                <ul>
+            <ul class="sub-menu">
+              <li> <a href="page-list-v6.html#">User Info<span class="arrow "></span></a> 
+                <ul class="sub-menu">
                   <li><a href="page-dashboard.html">Dashboard</a></li>
                   <li><a href="page-dashboard-profile.html">Profile</a></li>
                   <li><a href="page-dashboard-listing.html">My Listing</a></li>
@@ -70,102 +102,13 @@
               <li><a href="page-user-profile.html">User Profile</a></li>
             </ul>
           </li>
-          <li> <a href="page-dashboard.html#"><span class="title">Listing</span></a>
-            <ul>
-              <li> <a href="page-dashboard.html#">Listing Styles</a> 
-                <ul>
-                  <li><a href="page-list-v1.html">Listing v1</a></li>
-                  <li><a href="page-list-v2.html">Listing v2</a></li>
-                  <li><a href="page-list-v3.html">Listing v3</a></li>
-                  <li><a href="page-list-v4.html">Listing v4</a></li>
-                  <li><a href="page-list-v5.html">Listing v5</a></li>
-                  <li><a href="page-list-v6.html">Listing v6</a></li>
-                  <li><a href="page-list-v7.html">Listing v7</a></li>
-                </ul>
-              </li>
-              <li> <a href="page-dashboard.html#">Listing Map</a> 
-                <ul>
-                  <li><a href="page-list-v8.html">Map v1</a></li>
-                  <li><a href="page-list-v9.html">Map v2</a></li>
-                  <li><a href="page-list-v10.html">Map v3</a></li>
-                </ul>
-              </li>
-              <li> <a href="page-dashboard.html#">Listing Single</a> 
-                <ul>
-                  <li><a href="page-car-single-v1.html">Single V1</a></li>
-                  <li><a href="page-car-single-v2.html">Single V2</a></li>
-                  <li><a href="page-car-single-v3.html">Single V3</a></li>
-                  <li><a href="page-car-single-v4.html">Single V4</a></li>
-                  <li><a href="page-car-single-v5.html">Single V5</a></li>
-                  <li><a href="page-car-single-v6.html">Single V6</a></li>
-                </ul>
-              </li>
-              <li><a href="page-dashboard-add-listings.html">New Listing</a></li>
-            </ul>
-          </li>
-          <li> <a href="page-dashboard.html#"><span class="title">Blog</span></a>
-            <ul>
-              <li><a href="page-blog-grid.html">Blog Grid</a></li>
-              <li><a href="page-blog-list.html">Blog List</a></li>
-              <li><a href="page-blog-single.html">Blog Single</a></li>
-            </ul>
-          </li>
-          <li> <a href="page-dashboard.html#"><span class="title">Shop</span></a>
-            <ul>
-              <li><a href="page-shop.html">Shop</a></li>
-              <li><a href="page-shop-cart.html">Cart</a></li>
-              <li><a href="page-shop-checkout.html">Checkout</a></li>
-              <li><a href="page-shop-complete-order.html">Complete Order</a></li>
-              <li><a href="page-shop-single.html">Single</a></li>
-              <li><a href="page-user-profile.html">User Profile</a></li>
-            </ul>
-          </li>
-          <li> <a href="page-dashboard.html#"><span class="title">Pages</span></a>
-            <ul>
-              <li><a href="page-about.html">About Us</a></li>
-              <li><a href="page-calculator.html">Calculator</a></li>
-              <li><a href="page-compare.html">Compare</a></li>
-              <li><a href="page-contact.html">Contact</a></li>
-              <li><a href="page-error.html">404 Page</a></li>
-              <li><a href="page-faq.html">Faq</a></li>
-              <li><a href="page-login.html">Login</a></li>
-              <li><a href="page-pricing.html">Pricing</a></li>
-              <li><a href="page-register.html">Register</a></li>
-              <li><a href="page-service.html">Service</a></li>
-              <li><a href="page-terms.html">Terms and Conditions</a></li>
-              <li><a href="page-ui-element.html">UI Elements</a></li>
-            </ul>
-          </li>
-          <li class="add_listing"><a href="{%url 'listings'%}">+ Add Listing</a></li>
-          <li><a class="favorite" href="{%url 'favorites'%}"><span class="body-color flaticon-heart-1 fz18"><sup class="badge">{{like}}</sup></span></a></li>
-          {%if request.user.is_authenticated%}
-            <li><a class="notification" href="page-dashboard.html#"><span class="body-color flaticon-bell fz16"></span></a></li>
-            <li class="user_setting">
-              <div class="dropdown">
-                <a class="btn dropdown-toggle" href="page-dashboard.html#" data-bs-toggle="dropdown">
-                  <img class="rounded-circle mr10" src="images/team/e1.png" alt="e1.png"> 
-                  <span class="dn-1366">{{user.username}}<span class="fas fa-angle-down ml5"></span></span>
-                </a>
-                <div class="dropdown-menu">
-                  <div class="user_set_header">
-                    <img class="float-start" src="images/team/e1.png" alt="e1.png">
-                    <p>{{user.first_name}}<br><span class="address">{{user.email}}</span></p>
-                  </div>
-                  <div class="user_setting_content">
-                    <a class="dropdown-item active" href="page-dashboard.html#">My Profile</a>
-                    <a class="dropdown-item" href="page-dashboard.html#">Messages</a>
-                    <a class="dropdown-item" href="page-dashboard.html#">My Listing</a>
-                    <a class="dropdown-item" href="page-dashboard.html#">Help</a>
-                    <a class="dropdown-item" href="page-dashboard.html#">Log out</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-          {%endif%}
+          <li class="add_listing"><a href="{%url 'listing'%}">+ Добавить авто</a></li>
+          <li class="sidebar_panel"><a class="sidebar_switch pt0" href="page-list-v6.html#"><span></span></a></li>
         </ul>
       </div>
     </nav>
-  </header> 
+  </header>
+{%endblock%}
   <!-- Modal -->
   <div class="sign_up_modal modal fade" id="logInModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
