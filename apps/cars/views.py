@@ -9,7 +9,6 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from forms import *
-from django.contrib.auth import get_user_model
 
 # Create your views here.
 def rz():
@@ -151,6 +150,8 @@ def single(request, id):
     context['form']= form
     context['form_l']= form_l
     context['form_m']= form_m
+    context['len_l']= len(Auto_like.objects.filter(auto = car))
+
 
     return render(request, 'single/single_page.html', context)
 
@@ -209,8 +210,16 @@ class FilterObj():
             drp['Состояние'].add(a.сondition)
             drp['Тип топлива'].add(a.fuel_type)
             drp['Цвет'].add(a.color)
-
+        
         return drp
+    def get_sorted(self):
+        drp = {
+            'год': 'year',
+            'цена': 'prise',
+            'пробег': 'mileage',
+        }
+        return drp
+
 
 class AutoAll(FilterObj, generic.ListView):
     models = Auto
@@ -255,7 +264,7 @@ class FilterAuto(FilterObj, generic.ListView):
 
              year__lte=int(self.request.GET.get("max_year")),
              year__gte=int(self.request.GET.get("min_year")),
-            )   
+            ).order_by(self.request.GET.get("sorted"))
         return queryset
 
     def get_context_data(self, *, odject_list=None, **kwargs):

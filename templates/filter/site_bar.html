@@ -6,6 +6,25 @@
           <ul class="sasw_list mb0"> 
 
           <form action="{%url 'filter_auto'%}" method="get">
+
+            <li>
+              <div class="dropdown">
+                <button class="btn btn-block dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="  height: 49px;">
+                  <h5 class="subtitle" style="margin: 0px;">Coртировать по: </h5>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="width: 244px;">
+                  {%for i, v in view.get_sorted.items%}
+                  <div class="ui_kit_checkbox" style="margin-left: 10px;" >
+                    <div class="form-check mb20">
+                      <input class="form-check-input" type="checkbox" value="{{v}}" checked id="flexCheckPetrol" name="sorted">
+                      <label class="form-check-label">{{i}}</label>
+                    </div>
+                  </div>
+                {%endfor%}
+                </ul>
+              </div>
+          </li>
+
             <div>
               <li><h5 class="subtitle">Цена</h5></li>
               <li class="min_area list-inline-item">

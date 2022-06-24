@@ -73,7 +73,7 @@ class Auto(models.Model):
     image = models.ImageField(upload_to='auto/', blank=True, null=True, verbose_name='Фото')
     prise = models.IntegerField(blank=True, null=True, verbose_name='Цена')
     description = models.TextField(null=True, blank=True, verbose_name='Описание')
-    video_link = models.URLField(null=True, blank=True, verbose_name='Ссылка(ютуб)')
+    video_link = models.CharField(null=True, blank=True, verbose_name='Ссылка(ютуб)', max_length=1000)
     type_auto = models.ForeignKey(AutoType, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Tип') 
 
     class Meta:

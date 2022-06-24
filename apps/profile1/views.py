@@ -10,13 +10,15 @@ from apps.profile1.models import *
 from apps.cars.views import rz
 from forms import *
 from django.core.paginator import Paginator
-from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 
 # Create your views here.
 
+
 def dashboard(request):
-    return render(request, 'profile/dashboard.html')
+    len_l = len(Auto_like.objects.filter(user = request.user))
+    len_a = len(Auto.objects.filter(user = request.user))
+    return render(request, 'profile/dashboard.html', locals())
 
 def favorites(request):
     like_auto = Auto_like.objects.filter(user = request.user)
@@ -136,3 +138,6 @@ class Ubd_user(generic.UpdateView):
         user = form.save()
         login(self.request, user)
         return redirect('home')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context

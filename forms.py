@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django import forms
 from apps.cars.models import *
 from apps.profile1.models import *
-from django.contrib.auth import get_user_model
 from django.forms import Textarea
 
 
