@@ -19,7 +19,7 @@
         </a>
         <!-- Responsive Menu Structure-->
         <ul id="respMenu" class="ace-responsive-menu menu_list_custom_code wa text-end" data-menu-style="horizontal">
-           <a href="{%url 'home'%}"><span class="title">Home</span><span class="arrow "></span></a>
+           <a href="{%url 'home'%}"><span class="title">Главная</span><span class="arrow "></span></a>
 
           <li class=""> <a href="#"><span class="title">Explore</span></a>
             <!-- Level Two-->
@@ -39,7 +39,7 @@
             </ul>
           </li>
           <li class="add_listing"><a href="{%url 'listing'%}">+ Добавить авто</a></li>
-          <li><a class="favorite" href="#"><span class="body-color flaticon-heart-1 fz18"><sup class="badge">2</sup></span></a></li>
+          <li><a class="favorite" href="#"><span class="body-color flaticon-heart-1 fz18"><sup class="badge">{{len_l}}</sup></span></a></li>
           <li class=""><a class="notification" href="#"><span class="body-color flaticon-bell fz16"></span></a></li>
           <li class="user_setting">
             <div class="dropdown menu-active">

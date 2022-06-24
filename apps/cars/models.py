@@ -1,6 +1,7 @@
 from audioop import reverse
 from django.db import models
 from django.contrib.auth.models import User
+from django.template import Origin
 from django.utils.safestring import mark_safe
 from django.contrib.auth import get_user_model
 
@@ -78,6 +79,7 @@ class Auto(models.Model):
     class Meta:
         verbose_name_plural = 'Автомабили'
         verbose_name= 'Автомабиль'
+        ordering = ['-id']
 
     def __str__(self):
         return f'{self.make} {self.model}'

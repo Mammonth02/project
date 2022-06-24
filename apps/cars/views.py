@@ -1,5 +1,3 @@
-from typing import Type
-from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout, login
@@ -35,6 +33,8 @@ def rz():
         else:
             star_r[k] = 'нет отзывов'
     rrr = [0.5, 1.5, 2.5, 3.5, 4.5]
+
+
     return [star_r, rrr, len_r, all_cars]
 
 def index(request):
@@ -44,7 +44,7 @@ def index(request):
         'Тип': AutoType.objects.all()
     }
 
-
+    auto = Auto.objects.all()[:4]
 
     drp = {
             'Каробка передач': set(),
@@ -72,7 +72,8 @@ def index(request):
             'rrr': rz()[1],
             'drp': drp,
             'cat': cat,
-            'type': AutoType.objects.all()
+            'type': AutoType.objects.all(),
+            'auto': auto,
         }
     return render(request, 'home/index.html', context)
 
@@ -226,7 +227,6 @@ class AutoAll(FilterObj, generic.ListView):
         context['len_a'] = len(rz()[3])
 
         return context
-        
 
 class FilterAuto(FilterObj, generic.ListView):
 
@@ -267,7 +267,6 @@ class FilterAuto(FilterObj, generic.ListView):
 
         return context
 
-
 class FilterAutoIndex(FilterObj, generic.ListView):
 
     template_name = "filter/filter.html"
@@ -291,3 +290,18 @@ class FilterAutoIndex(FilterObj, generic.ListView):
         context['star_r'] = rz()[0]
 
         return context
+
+def category_list(request, id):
+    auto_all = Auto.objects.filter(type_auto_id = id)
+    typs = AutoType.objects.all()
+    auto = Auto.objects.all()[:3]
+    make = Make.objects.all()
+
+    paginator = Paginator(auto_all, 4)
+    page_number = request.GET.get('page')
+    auto_all = paginator.get_page(page_number)
+
+
+    return render(request, 'category/list.html', locals())
+
+

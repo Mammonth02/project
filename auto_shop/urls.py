@@ -46,6 +46,9 @@ urlpatterns = [
     path('filter', AutoAll.as_view(), name='filter'),
     path('chat:<int:id>', chat, name='chat'),
 
+    path('category_list/<int:id>', category_list, name='category_list'),
+
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

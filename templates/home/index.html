@@ -15,7 +15,7 @@
                   <img src="{{t.icon.url}}" alt="1.png">
                 </div>
                 <div class="details">
-                  <p class="title"><a href="page-car-single-v1.html">{{t.title}}</a></p>
+                  <p class="title"><a href="{%url 'category_list' t.pk%}">{{t.title}}</a></p>
                 </div>
               </div>
             </div>
@@ -85,8 +85,8 @@
           </div>
           <div class="col-md-9 col-xl-5">
             <div class="home1_divider_content">
-              <h2 class="title">We Make Finding The Right Car Simple</h2>
-              <p class="para">At Voiture what matters to us is making your car search and buying experience as simple as possible, so you can find the right car quickly and get on with making it yours.</p>
+              <h2 class="title">Мы Упрощаем Поиск Подходящего Автомобиля</h2>
+              <p class="para"></p>
             </div>
           </div>
         </div>
@@ -99,189 +99,67 @@
         <div class="row">
           <div class="col-lg-6 offset-lg-3">
             <div class="main-title text-center">
-              <h2 class="text-white">Popular Listings</h2>
+              <h2 class="text-white">Новые Автомобили</h2>
             </div>
           </div>
         </div>
         <div class="col-lg-12">
           <div class="home1_popular_listing">
             <div class="listing_item_4grid_slider dots_none">
-              <div class="item">
-                <div class="car-listing">
-                  <div class="thumb">
-                    <div class="tag">FEATURED</div>
-                    <img src="{% static 'images/listing/1.jpg' %}" alt="1.jpg">
-                    <div class="thmb_cntnt2">
-                      <ul class="mb0">
-                        <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-photo-camera mr3"></span> 22</a></li>
-                        <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-play-button mr3"></span> 3</a></li>
-                      </ul>
-                    </div>
-                    <div class="thmb_cntnt3">
-                      <ul class="mb0">
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-shuffle-arrows"></span></a></li>
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-heart"></span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="details">
-                    <div class="wrapper">
-                      <h5 class="price">$129</h5>
-                      <h6 class="title"><a href="page-car-single-v1.html">Volvo XC90 - 2020</a></h6>
-                      <div class="listign_review">
+              {%for c in auto%}
+                <div class="item">
+                  <div class="car-listing">
+                    <div class="thumb">
+                      <div class="tag">FEATURED</div>
+                      <img src="{{c.image.url}}" alt="1.jpg">
+                      <div class="thmb_cntnt2">
                         <ul class="mb0">
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#">4.7</a></li>
-                          <li class="list-inline-item">(684 reviews)</li>
+                          <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-photo-camera mr3"></span> 22</a></li>
+                          <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-play-button mr3"></span> 3</a></li>
+                        </ul>
+                      </div>
+                      <div class="thmb_cntnt3">
+                        <ul class="mb0">
+                          <li class="list-inline-item"><a href="index.html#"><span class="flaticon-shuffle-arrows"></span></a></li>
+                          <li class="list-inline-item"><a href="index.html#"><span class="flaticon-heart"></span></a></li>
                         </ul>
                       </div>
                     </div>
-                    <div class="listing_footer">
-                      <ul class="mb0">
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-road-perspective me-2"></span>77362</a></li>
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gas-station me-2"></span>Diesel</a></li>
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gear me-2"></span>Automatic</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="car-listing">
-                  <div class="thumb">
-                    <div class="tag">FEATURED</div>
-                    <img src="images/listing/2.jpg" alt="2.jpg">
-                    <div class="thmb_cntnt2">
-                      <ul class="mb0">
-                        <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-photo-camera mr3"></span> 22</a></li>
-                        <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-play-button mr3"></span> 3</a></li>
-                      </ul>
-                    </div>
-                    <div class="thmb_cntnt3">
-                      <ul class="mb0">
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-shuffle-arrows"></span></a></li>
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-heart"></span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="details">
-                    <div class="wrapper">
-                      <h5 class="price">$56</h5>
-                      <h6 class="title"><a href="page-car-single-v1.html">Mercedes-Benz S 560 - 2021</a></h6>
-                      <div class="listign_review">
+                    <div class="details">
+                      <div class="wrapper">
+                        <h5 class="price">$129</h5>
+                        <h6 class="title"><a href="page-car-single-v1.html">{{c.make}} {{c.model}} - {{c.year}}</a></h6>
+                        <div class="listign_review">
+                          <ul class="mb0">
+                            {%for r, v in star_r.items%}
+                                      {%if r == c.id%}
+                                        {%for i in rrr%}
+                                          {%if v >= i%}
+                                            <li class="list-inline-item"><a href="page-car-single-v1.html#"><i class="fa fa-star"></i></a></li>
+                                          {%endif%}
+                                        {%endfor%}
+                                        <li class="list-inline-item"><a href="page-dashboard-favorites.html#">{{v}}</a></li>
+                                      {%endif%}
+                                    {%endfor%}
+                                    {%for r, v in len_r.items%}
+                                      {%if r == c.id%}
+                                        <li class="list-inline-item">({{v}} отзывов)</li>
+                                      {%endif%}
+                                    {%endfor%}
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="listing_footer">
                         <ul class="mb0">
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#">4.7</a></li>
-                          <li class="list-inline-item">(684 reviews)</li>
+                          <li class="list-inline-item"><a href="index.html#"><span class="flaticon-road-perspective me-2"></span>{{c.mileage}}</a></li>
+                          <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gas-station me-2"></span>{{c.fuel_type}}</a></li>
+                          <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gear me-2"></span>{{c.transmission }}</a></li>
                         </ul>
                       </div>
                     </div>
-                    <div class="listing_footer">
-                      <ul class="mb0">
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-road-perspective me-2"></span>77362</a></li>
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gas-station me-2"></span>Diesel</a></li>
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gear me-2"></span>Automatic</a></li>
-                      </ul>
-                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="item">
-                <div class="car-listing">
-                  <div class="thumb">
-                    <div class="tag">FEATURED</div>
-                    <img src="images/listing/3.jpg" alt="3.jpg">
-                    <div class="thmb_cntnt2">
-                      <ul class="mb0">
-                        <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-photo-camera mr3"></span> 22</a></li>
-                        <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-play-button mr3"></span> 3</a></li>
-                      </ul>
-                    </div>
-                    <div class="thmb_cntnt3">
-                      <ul class="mb0">
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-shuffle-arrows"></span></a></li>
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-heart"></span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="details">
-                    <div class="wrapper">
-                      <h5 class="price">$230</h5>
-                      <h6 class="title"><a href="page-car-single-v1.html">BMW M8 Gran Coupe Base - 2021</a></h6>
-                      <div class="listign_review">
-                        <ul class="mb0">
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#">4.7</a></li>
-                          <li class="list-inline-item">(684 reviews)</li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="listing_footer">
-                      <ul class="mb0">
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-road-perspective me-2"></span>77362</a></li>
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gas-station me-2"></span>Diesel</a></li>
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gear me-2"></span>Automatic</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="car-listing">
-                  <div class="thumb">
-                    <div class="tag blue">SPECIAL</div>
-                    <img src="images/listing/4.jpg" alt="4.jpg">
-                    <div class="thmb_cntnt2">
-                      <ul class="mb0">
-                        <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-photo-camera mr3"></span> 22</a></li>
-                        <li class="list-inline-item"><a class="text-white" href="index.html#"><span class="flaticon-play-button mr3"></span> 3</a></li>
-                      </ul>
-                    </div>
-                    <div class="thmb_cntnt3">
-                      <ul class="mb0">
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-shuffle-arrows"></span></a></li>
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-heart"></span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="details">
-                    <div class="wrapper">
-                      <h5 class="price">$478</h5>
-                      <h6 class="title"><a href="page-car-single-v1.html">Nıssan Qasqai - Sky Pack</a></h6>
-                      <div class="listign_review">
-                        <ul class="mb0">
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#"><i class="fa fa-star"></i></a></li>
-                          <li class="list-inline-item"><a href="index.html#">4.7</a></li>
-                          <li class="list-inline-item">(684 reviews)</li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="listing_footer">
-                      <ul class="mb0">
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-road-perspective me-2"></span>77362</a></li>
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gas-station me-2"></span>Diesel</a></li>
-                        <li class="list-inline-item"><a href="index.html#"><span class="flaticon-gear me-2"></span>Automatic</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {%endfor%}
             </div>
           </div>
         </div>
@@ -544,5 +422,6 @@
       </div>
     </section>
     
+    <a class="scrollToHome" href="page-blog-list.html#"><i class="fas fa-arrow-up"></i></a>
 {% endblock main%}
 
