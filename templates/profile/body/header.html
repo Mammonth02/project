@@ -42,12 +42,12 @@
           <li class="user_setting">
             <div class="dropdown menu-active">
               <a class="btn dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                <img class="rounded-circle mr10" src="images/team/e1.png" alt="e1.png"> 
+                <img class="rounded-circle mr10" src="{% static 'assets/images/user.png' %}" alt="dvdef" style="height: 50px;"> 
                 <span class="dn-1366"> {{user.first_name}} {{user.last_name}}  <span class="fas fa-angle-down ml5"></span></span>
               </a>
               <div class="dropdown-menu">
                 <div class="user_set_header">
-                  <img class="float-start" src="images/team/e1.png" alt="e1.png">
+                  <img class="float-start" src="{% static 'assets/images/user.png' %}" alt="e1.png" style="height: 50px;">
                   <p>{{user.first_name}} {{user.last_name}} <br><span class="address">{{user.email}}</span></p>
                 </div>
                 <div class="user_setting_content">

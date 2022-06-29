@@ -10,5 +10,6 @@ admin.site.register(Make)
 admin.site.register(Reviews)
 admin.site.register(Images)
 admin.site.register(Auto_like)
+admin.site.register(Otvety)
 
 

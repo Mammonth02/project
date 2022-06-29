@@ -77,29 +77,29 @@
                             </div>
                         {%endfor%}
 						<div class="row">
-                            <div class="col-lg-12">
-                                <div class="mbp_pagination mt10">
-                                  <ul class="page_navigation">
-                                    <li class="page-item">
-                                      <a class="page-link" href="" tabindex="-1" aria-disabled="true"> <span class="fa fa-arrow-left"></span></a>
-                                    </li>
-                                      {%for p in auto_all.paginator.page_range%}
-                                      {%if auto_all.number == p%}
-                                                        <li class="page-item active" aria-current="page">
-                                                          <a class="page-link" href="?page={{p}}">{{p}}<span class="sr-only"></span></a>
-                                                        </li>
-                                                      {%else%}
-                                                        <li class="page-item">
-                                                          <a class="page-link" href="?page={{p}}">{{p}}<span class="sr-only"></span></a>
-                                                        </li>
-                                                      {%endif%}
-                                      {%endfor%}
-                                      <li class="page-item">
-                                        <a class="page-link" href=""><span class="fa fa-arrow-right"></span></a>
-                                      </li>
-                                  </ul>
-                                </div>
-                              </div>
+              <div class="col-lg-12">
+                  <div class="mbp_pagination mt10">
+                    <ul class="page_navigation">
+                      <li class="page-item">
+                        <a class="page-link" href="" tabindex="-1" aria-disabled="true"> <span class="fa fa-arrow-left"></span></a>
+                      </li>
+                        {%for p in auto_all.paginator.page_range%}
+                          {%if auto_all.number == p%}
+                              <li class="page-item active" aria-current="page">
+                                <a class="page-link" href="?page={{p}}">{{p}}<span class="sr-only"></span></a>
+                              </li>
+                            {%else%}
+                              <li class="page-item">
+                                <a class="page-link" href="?page={{p}}">{{p}}<span class="sr-only"></span></a>
+                              </li>
+                          {%endif%}
+                        {%endfor%}
+                        <li class="page-item">
+                          <a class="page-link" href=""><span class="fa fa-arrow-right"></span></a>
+                        </li>
+                    </ul>
+                  </div>
+                </div>
 						</div>
 					</div>
 				</div>
@@ -108,7 +108,10 @@
             <h4 class="title">Поиск</h4>
             <div class="blog_search_widget">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Пишите сюда" aria-label="Recipient's username">
+                <form action="" method="get">
+                  <input type="text" class="form-control" placeholder="Пишите сюда" aria-label="Recipient's username" name="search_word">
+                  <button  class="btn btn-link" type="submit" name='search_button'></button>
+                </form>
               </div>
             </div>
           </div>
@@ -130,16 +133,16 @@
                     <img class="align-self-start mr-3" src="{{i.image.url}}" alt="1.jpg">
                 </div>
                 <div class="flex-grow-1 ms-3">
-                    <h5 class="post_title"><a href="page-blog-single.html">{{i.make}} {{i.model}} - {{i.year}}</a></h5>
+                    <h5 class="post_title"><a href="{%url 'single_page' i.pk%}">{{i.make}} {{i.model}} - {{i.year}}</a></h5>
                 </div>
                 </div>
             {%endfor%}
           </div>
           <div class="blog_tag_widget">
-            <h4 class="title">Все марки</h4>
+            <h4 class="title">Mарки</h4>
             <ul class="tag_list">
             {%for i in make%}
-                <li class="list-inline-item"><a href="page-blog-list.html#">{{i}}</a></li>
+                <li class="list-inline-item"><a href="{%url 'make_list' i.pk%}">{{i}}</a></li>
             {%endfor%}
             </ul>
           </div>

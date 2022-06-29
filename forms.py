@@ -26,11 +26,16 @@ class ChatForm(forms.ModelForm):
 class ReviewsAddForm(forms.ModelForm):
     class Meta:
         model = Reviews
-        fields = ['reliability', 'comfort', 'performance', 'exterior_styling', 'interior_design', 'value_for_the_money', 'reviews']
+        fields = ['reliability', 'comfort', 'performance', 'exterior_styling', 'interior_design', 'value_for_the_money', 'text']
         widgets = {
             'reviews': forms.Textarea(attrs={'cols': 60, 'rows': 5})
         }
-  
+
+class OtvetyForm(forms.ModelForm):
+    class Meta:
+        model = Otvety
+        fields = ['text']
+
 class AutolikeForm(forms.ModelForm):
     class Meta:
         model = Auto_like

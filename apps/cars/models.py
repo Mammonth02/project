@@ -123,7 +123,7 @@ class Reviews(models.Model):
     (5, 5),
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    reviews = models.TextField(verbose_name='отзыв')
+    text = models.TextField(verbose_name='отзыв')
     auto = models.ForeignKey(Auto, on_delete=models.CASCADE)
     comfort = models.IntegerField(choices=RATING, verbose_name='комфорт')
     performance = models.IntegerField(choices=RATING, verbose_name='представление')
@@ -137,4 +137,16 @@ class Reviews(models.Model):
         verbose_name_plural = 'Коментарии'
         verbose_name= 'Коментарий'
 
+class Otvety(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, verbose_name='Пользователь')
+    parent = models.ForeignKey(Reviews, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Коментарий')
+    text = models.TextField(verbose_name='Ответ')
+    parent2 = models.ForeignKey('Otvety', on_delete=models.CASCADE, null=True, blank=True, verbose_name='Ответ')
 
+
+    class Meta:
+        verbose_name_plural = 'Ответы'
+        verbose_name= 'Ответ'
+
+    def __str__(self):
+        return f'{self.user}'

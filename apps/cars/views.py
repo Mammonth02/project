@@ -9,6 +9,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from forms import *
+from django.db.models import Q
 
 # Create your views here.
 def rz():
@@ -120,6 +121,12 @@ def single(request, id):
 
     }
 
+    otvety = {}
+    for i in reviewses:
+        otvety[i.id] = Otvety.objects.filter(parent = i)
+    context['otvety']= otvety
+    
+
     if request.method == 'POST':
         form = ReviewsAddForm(request.POST)
         form_l = AutolikeForm(request.POST)
@@ -146,7 +153,7 @@ def single(request, id):
         form = ReviewsAddForm()
         form_l = AutolikeForm()
         form_m = ChatForm()
-
+    
     context['form']= form
     context['form_l']= form_l
     context['form_m']= form_m
@@ -154,6 +161,23 @@ def single(request, id):
 
 
     return render(request, 'single/single_page.html', context)
+
+def otvetyview(request, id1, id2):
+    rev = Reviews.objects.get(id = id1)
+    if request.method == 'POST':
+        form = OtvetyForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user = request.user
+            form.parent_id = id1
+            if id2 != 0:
+                form.parent2_id = id2
+            form.save()
+            return redirect('single_page', rev.auto.id)
+    else:
+        form = OtvetyForm()
+
+    return render(request, 'single/tt.html', locals())
 
 class RegisterUser(CreateView):
     form_class = RegisterUserForm
@@ -219,7 +243,6 @@ class FilterObj():
             'пробег': 'mileage',
         }
         return drp
-
 
 class AutoAll(FilterObj, generic.ListView):
     models = Auto
@@ -300,17 +323,46 @@ class FilterAutoIndex(FilterObj, generic.ListView):
 
         return context
 
+def aa(auto_all, request, word=None):
+
+        typs = AutoType.objects.all()
+        auto = Auto.objects.all()[:3]
+        make = Make.objects.all()
+
+        if word == None:
+            paginator = Paginator(auto_all, 4)
+            page_number = request.GET.get('page')
+            auto_all = paginator.get_page(page_number)
+
+        context = {
+            'typs': typs,
+            'auto': auto,
+            'make': make,
+            'auto_all': auto_all,
+        }
+        return context
+
 def category_list(request, id):
-    auto_all = Auto.objects.filter(type_auto_id = id)
-    typs = AutoType.objects.all()
-    auto = Auto.objects.all()[:3]
-    make = Make.objects.all()
+    if 'search_button' in request.GET:
+        word = request.GET.get('search_word')
+        auto_all = Auto.objects.filter(Q(description__icontains = word) | Q(model__icontains = word))
+        return render(request, 'category/list.html', aa(auto_all, request, word))
+    else:
+        auto_all = Auto.objects.filter(type_auto_id = id)
+        return render(request, 'category/list.html', aa(auto_all, request))
 
-    paginator = Paginator(auto_all, 4)
-    page_number = request.GET.get('page')
-    auto_all = paginator.get_page(page_number)
+
+def make_list(request, id):
+    if 'search_button' in request.GET:
+        word = request.GET.get('search_word')
+        auto_all = Auto.objects.filter(Q(description__icontains = word) | Q(model__icontains = word))
+        return render(request, 'category/list.html', aa(auto_all, request, word))
+    else:
+        auto_all = Auto.objects.filter(make_id = id)
+        return render(request, 'category/list.html', aa(auto_all, request))
 
 
-    return render(request, 'category/list.html', locals())
+
+
 
 

@@ -47,6 +47,8 @@ urlpatterns = [
     path('chat:<int:id>', chat, name='chat'),
 
     path('category_list/<int:id>', category_list, name='category_list'),
+    path('make_list/<int:id>', make_list, name='make_list'),
+    path('otvetyview/<int:id1>/<int:id2>/', otvetyview, name='otvetyview'),
 
 
 ]
